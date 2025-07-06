@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre & Karina - Nosso Casamento</title>
+    <!-- Favicon -->
+    <link rel="icon" href="faviconKeA.png" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados para combinar com a estética do convite */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f0ff; /* Fundo roxo claro */
+            color: #4a0e7e; /* Texto roxo escuro */
+            scroll-behavior: smooth; /* Rolagem suave para os links do menu */
+        }
+        .hero-section {
+            /* Usando 'Convite_Base_BKG.jpg' como o fundo principal para a secção hero, posicionado no topo */
+            background-image: url('Convite_Base_BKG.jpg');
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            position: relative;
+            padding: 4rem 1rem;
+            min-height: 100vh; /* Altura total da viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-overlay {
+            background-color: rgba(255, 255, 255, 0.7); /* Sobreposição branca semi-transparente */
+            border-radius: 1.5rem; /* Cantos arredondados */
+            padding: 2rem;
+            max-width: 90%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px); /* Efeito de desfoque suave */
+        }
+        .couple-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem; /* Fonte maior para os nomes */
+            color: #6a0dad; /* Roxo real */
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #5a118e;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #6a0dad;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #8e44ad; /* Roxo médio */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Removido display: inline-flex; align-items: center; justify-content: center; */
+        }
+        .btn-primary:hover {
+            background-color: #9b59b6; /* Roxo mais claro ao passar o mouse */
+        }
+        .btn-secondary { /* Estilo para o novo botão do calendário */
+            background-color: #a0a0a0; /* Cor acinzentada */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover {
+            background-color: #b0b0b0; /* Cinza mais claro ao passar o mouse */
+        }
+        .countdown-timer span {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #6a0dad;
+            display: block;
+            line-height: 1;
+        }
+        .countdown-timer div {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #5a118e;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .couple-names {
+                font-size: 3.5rem;
+            }
+            .quote {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .countdown-timer span {
+                font-size: 1.8rem;
+            }
+            .hero-buttons {
+                flex-direction: column; /* Empilha os botões verticalmente em telas pequenas */
+                gap: 1rem; /* Espaço entre os botões empilhados */
+            }
+            /* Ajuste para o menu em telas pequenas */
+            .navbar .container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .couple-names {
+                font-size: 2.5rem;
+            }
+            .quote {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .countdown-timer span {
+                font-size: 1.5rem;
+            }
+            .hero-overlay {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Imagem de fundo do rodapé */
+        .footer-section {
+            background-image: url('footpage.png'); /* Usando a imagem footpage.png */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        /* Estilo para o contador de visitas */
+        .visit-counter {
+            font-size: 0.75rem; /* Tamanho da fonte pequeno */
+            color: rgba(255, 255, 255, 0.7); /* Cor mais clara para ser discreto */
+            margin-top: 0.5rem;
+        }
+
+        /* Estilos para o menu de navegação */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para o menu */
+            backdrop-filter: blur(8px); /* Efeito de desfoque para o fundo */
+            color: #4a0e7e; /* Cor do texto do menu */
+            padding: 1rem 0;
+            position: fixed; /* Menu fixo no topo */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Garante que o menu fique acima de outros elementos */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out; /* Transição para o efeito de ocultar/mostrar */
+        }
+        .navbar-hidden {
+            transform: translateY(-100%); /* Move o menu para cima para ocultá-lo */
+        }
+        .navbar-link {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .navbar-link:hover {
+            background-color: rgba(142, 68, 173, 0.2); /* Roxo mais claro e transparente ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Secção Menu de Navegação -->
+    <nav class="navbar" id="mainNavbar">
+        <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-4">
+            <a href="#hero-section" class="navbar-link">Início</a>
+            <a href="#invitation-details" class="navbar-link">Convite</a>
+            <a href="#event-details" class="navbar-link">O Grande Dia</a>
+            <a href="#rsvp" class="navbar-link">Confirmar Presença</a>
+            <a href="#gift-list" class="navbar-link">Lista de Presentes</a>
+            <a href="#guestbook" class="navbar-link">Livro de Visitas</a>
+        </div>
+    </nav>
+
+    <!-- Secção Hero -->
+    <section id="hero-section" class="hero-section">
+        <div class="hero-overlay">
+            <h1 class="couple-names">Alexandre & Karina</h1>
+            <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade." <br> Eclesiastias 4:12</p>
+
+            <div class="countdown-timer flex justify-center items-center space-x-4 mb-8">
+                <div class="text-center">
+                    <span id="days">00</span>
+                    <div>Dias</div>
+                </div>
+                <div class="text-center">
+                    <span id="hours">00</span>
+                    <div>Horas</div>
+                </div>
+                <div class="text-center">
+                    <span id="minutes">00</span>
+                    <div>Minutos</div>
+                </div>
+                <div class="text-center">
+                    <span id="seconds">00</span>
+                    <div>Segundos</div>
+                </div>
+            </div>
+
+            <p class="text-lg mb-6 text-gray-700">Junte-se a nós para testemunhar o início de um novo capítulo em nossas vidas.</p>
+            <div class="hero-buttons flex justify-center items-center gap-4">
+                <a href="#rsvp" class="btn-primary inline-block">Confirmar Presença</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento%20Alexandre%20%26%20Karina&dates=20251025T170000/20251025T180000&details=Celebre%20a%20uni%C3%A3o%20em%20matrim%C3%B3nio%20de%20Alexandre%20e%20Karina.%20Junte-se%20a%20n%C3%B3s%20para%20testemunhar%20o%20in%C3%ADcio%20de%20um%20novo%20cap%C3%ADtulo%20em%20nossas%20vidas.&location=2%C2%AA%20Igreja%20Batista%20de%20Cidade%20Dutra%2C%20Rua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010&sf=true&output=xml" target="_blank" class="btn-secondary inline-block">Adicionar ao Calendário</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção Detalhes do Convite -->
+    <section id="invitation-details" class="py-16 bg-gradient-to-b from-f7f0ff to-e0bbff">
+        <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row items-center justify-center md:justify-between">
+            <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                <h2 class="section-title">Nosso Convite</h2>
+                <p class="text-lg mb-4 text-gray-800">Com a benção de Deus e a alegria de nossos pais, Elisabete C. Curvelo, Norma M. G. Silva, e em memória: Isaias Curvelo e Edenyr W. Silva,</p>
+                <p class="text-xl font-semibold text-gray-900">Temos a imensa felicidade de convidar você para celebrar a nossa união em matrimônio.</p>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end">
+                <img src="nosdois.png" alt="Alexandre e Karina" class="rounded-xl shadow-lg max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção Detalhes do Evento -->
+    <section id="event-details" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <h2 class="section-title">O Grande Dia</h2>
+            <p class="text-2xl font-bold mb-4 text-purple-800">25 de outubro de 2025, às 17h</p>
+            <p class="text-lg mb-2 text-gray-700"><strong>Local:</strong> 2ª Igreja Batista de Cidade Dutra</p>
+            <p class="text-lg mb-2 text-gray-700"><strong>Celebrante:</strong> Pastor Fernando Junior</p>
+            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divisão de Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
+            <!-- Incorporação do Google Maps -->
+            <div class="relative w-full h-96 mt-8 rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" target="_blank" class="btn-primary inline-block mt-4">Abrir no Google Maps</a>
+        </div>
+    </section>
+
+    <!-- Secção RSVP - Agora usando Formulários Google -->
+    <section id="rsvp" class="py-16 bg-gradient-to-b from-e0bbff to-f7f0ff">
+        <div class="container mx-auto px-4 text-center max-w-2xl">
+            <h2 class="section-title">Confirme Sua Presença</h2>
+            <p class="text-lg mb-8 text-gray-800">Mal podemos esperar para compartilhar este momento especial com você! Por favor, confirme sua presença através do formulário abaixo:</p>
+            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl" style="height: 700px;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Carregando…</iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção Lista de Presentes -->
+    <section id="gift-list" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <h2 class="section-title">Lista de Presentes</h2>
+            <p class="text-lg mb-8 text-gray-800">A sua presença já é o nosso maior presente! Mas se desejar nos presentear, aqui está a nossa lista:</p>
+            <a href="https://www.finalfeliz.de/karinasilva-e-alexandrecurvelo" target="_blank" class="btn-primary">
+                Ver Lista de Presentes
+            </a>
+            <div class="mt-4 flex justify-center">
+                <img src="magalu-logo.webp" alt="Logo Magalu" class="w-12 h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção Livro de Visitas - Agora usando Formulários Google -->
+    <section id="guestbook" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-2xl">
+            <h2 class="section-title">Livro de Visitas ✨</h2>
+            <p class="text-lg mb-8 text-gray-800">Deixe uma mensagem especial para os noivos através do formulário abaixo:</p>
+            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl" style="height: 376px;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Carregando…</iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção Hashtag -->
+    <section class="py-12 bg-white text-center">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-purple-800 mb-4">#AlexandreEKarina</h3>
+            <p class="text-lg text-gray-700">Compartilhe seus momentos connosco usando a nossa hashtag!</p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-purple-900 text-white py-8 text-center rounded-t-2xl footer-section">
+        <p>&copy; 2025 Alexandre & Karina. Todos os direitos reservados.</p>
+        <p class="text-sm mt-2">Criado com carinho para o nosso dia especial.</p>
+        <p class="visit-counter">Visitas: <span id="visitCounter">0</span></p>
+    </footer>
+
+    <script>
+        // Lógica do Cronómetro
+        const weddingDate = new Date("October 25, 2025 17:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown-timer").innerHTML = "<p class='text-3xl font-bold text-purple-800'>O GRANDE DIA CHEGOU!</p>";
+            }
+        }, 1000);
+
+        // Lógica do Contador de Visitas
+        window.onload = function() {
+            let visitCount = localStorage.getItem('weddingSiteVisitCount');
+            if (visitCount) {
+                visitCount = parseInt(visitCount) + 1;
+            } else {
+                visitCount = 1;
+            }
+            localStorage.setItem('weddingSiteVisitCount', visitCount);
+            document.getElementById('visitCounter').innerText = visitCount;
+
+            // Inicia o temporizador para ocultar o menu após o carregamento inicial
+            resetHideTimer();
+        };
+
+        // Lógica do Menu Ocultar/Mostrar
+        let lastScrollY = 0;
+        const mainNavbar = document.getElementById('mainNavbar');
+        const scrollThreshold = 50; // Quantidade de pixels para rolar antes de ocultar/mostrar
+        let hideMenuTimeout; // Variável para armazenar o ID do temporizador
+
+        function hideNavbar() {
+            mainNavbar.classList.add('navbar-hidden');
+        }
+
+        function showNavbar() {
+            mainNavbar.classList.remove('navbar-hidden');
+        }
+
+        function resetHideTimer() {
+            clearTimeout(hideMenuTimeout); // Limpa qualquer temporizador existente
+            showNavbar(); // Garante que o menu esteja visível
+            hideMenuTimeout = setTimeout(hideNavbar, 2000); // Oculta após 2 segundos
+        }
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Se rolar para baixo e passar do limite, oculta o menu
+            if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+                clearTimeout(hideMenuTimeout); // Limpa o temporizador de ocultação
+                hideNavbar(); // Oculta imediatamente ao rolar para baixo
+            }
+            // Se rolar para cima ou estiver no topo, mostra o menu e reinicia o temporizador
+            else if (currentScrollY < lastScrollY || currentScrollY <= scrollThreshold) {
+                resetHideTimer(); // Mostra o menu e reinicia o temporizador
+            }
+
+            lastScrollY = currentScrollY;
+        });
+
+        // Adiciona um listener para eventos de movimento do mouse (para desktop)
+        // Isso fará com que o menu reapareça se o mouse for movido, mesmo sem scroll
+        document.addEventListener('mousemove', () => {
+            resetHideTimer();
+        });
+
+        // Adiciona um listener para eventos de toque (para dispositivos móveis)
+        document.addEventListener('touchstart', () => {
+            resetHideTimer();
+        });
+    </script>
+</body>
+</html>
