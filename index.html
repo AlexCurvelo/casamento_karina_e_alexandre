@@ -187,6 +187,32 @@
             border: 0;
             overflow: hidden;
         }
+
+        /* Estilos para os contentores dos iframes do Google Forms */
+        .rsvp-iframe-container {
+            min-height: 700px; /* Altura mínima padrão para telas maiores */
+        }
+        .guestbook-iframe-container {
+            min-height: 376px; /* Altura mínima padrão para telas maiores */
+        }
+
+        @media (max-width: 768px) {
+            .rsvp-iframe-container {
+                min-height: 550px; /* Altura mínima menor para tablets */
+            }
+            .guestbook-iframe-container {
+                min-height: 300px; /* Altura mínima menor para tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rsvp-iframe-container {
+                min-height: 450px; /* Altura mínima ainda menor para telemóveis */
+            }
+            .guestbook-iframe-container {
+                min-height: 250px; /* Altura mínima ainda menor para telemóveis */
+            }
+        }
     </style>
 </head>
 <body>
@@ -208,7 +234,7 @@
         <div class="hero-overlay">
             <img src="—Pngtree—a pair of beautiful golden_5254746.png" alt="Anéis de Casamento Dourados" class="w-24 h-auto mx-auto mb-4">
             <h1 class="couple-names">Alexandre & Karina</h1>
-            <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade." <br> Eclesiastes 4:12</p>
+            <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade." <br> Eclesiastias 4:12</p>
 
             <div class="countdown-timer flex justify-center items-center space-x-4 mb-8">
                 <div class="text-center">
@@ -272,7 +298,7 @@
         <div class="container mx-auto px-4 text-center max-w-2xl">
             <h2 class="section-title">Confirme Sua Presença</h2>
             <p class="text-lg mb-8 text-gray-800">Mal podemos esperar para compartilhar este momento especial com você! Por favor, confirme sua presença através do formulário abaixo:</p>
-            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl" style="height: 700px;">
+            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl rsvp-iframe-container">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Carregando…</iframe>
             </div>
         </div>
@@ -297,7 +323,7 @@
         <div class="container mx-auto px-4 text-center max-w-2xl">
             <h2 class="section-title">Livro de Visitas ✨</h2>
             <p class="text-lg mb-8 text-gray-800">Deixe uma mensagem especial para os noivos através do formulário abaixo:</p>
-            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl" style="height: 376px;">
+            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl guestbook-iframe-container">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Carregando…</iframe>
             </div>
         </div>
