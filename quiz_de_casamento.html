@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bíblico de Casamento - Alexandre & Karina</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f0ff; /* Fundo roxo claro */
+            color: #4a0e7e; /* Texto roxo escuro */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            max-width: 800px; /* Largura máxima para o jogo */
+            width: 100%;
+            text-align: center;
+        }
+        .game-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #6a0dad;
+            margin-bottom: 1.5rem;
+        }
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #5a118e;
+            margin-bottom: 2rem;
+        }
+        .options-container {
+            display: flex;
+            flex-wrap: wrap; /* Permite que as opções quebrem para a próxima linha */
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .option-item {
+            /* Largura flexível para as opções */
+            flex-basis: calc(33.33% - 1.5rem); /* 3 colunas, ajustando para o gap */
+            max-width: 180px; /* Mantém um limite para desktop */
+            height: auto; /* Altura automática para se ajustar ao conteúdo */
+            min-height: 120px; /* Altura mínima para manter o design */
+            border: 3px solid transparent;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* Para texto e imagem */
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem; /* Aumenta o padding interno */
+            text-align: center;
+        }
+        .option-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .option-item.correct {
+            border-color: #28a745; /* Verde para correto */
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        .option-item.incorrect {
+            border-color: #dc3545; /* Vermelho para incorreto */
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        .option-image {
+            max-width: 80px; /* Tamanho da imagem dentro da opção */
+            max-height: 60px;
+            object-fit: contain;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .option-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4a0e7e;
+        }
+        .feedback-message {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            min-height: 2rem; /* Espaço para a mensagem */
+            color: #5a118e; /* Cor do texto da explicação */
+        }
+        .explanation-text {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 0.5rem;
+            color: #4a0e7e; /* Cor do texto da explicação */
+        }
+        .score-display {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a0e7e;
+            margin-top: 1rem;
+        }
+        .timer-display {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6a0dad;
+            margin-bottom: 1rem;
+        }
+        .attempts-display { /* New style for attempts display */
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a0e7e;
+            margin-top: 0.5rem;
+        }
+        .btn-game {
+            background-color: #8e44ad; /* Roxo médio */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 1.5rem;
+            cursor: pointer;
+        }
+        .btn-game:hover {
+            background-color: #9b59b6; /* Roxo mais claro ao passar o mouse */
+        }
+
+        /* Estilos da barra de progresso */
+        .progress-bar-container {
+            width: 80%;
+            height: 20px;
+            background-color: #e0bbff; /* Fundo lilás claro */
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #6a0dad; /* Lilás mais escuro para o preenchimento */
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Estilos para as regras do jogo */
+        .game-rules {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            color: #5a118e;
+        }
+        .game-rules h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #6a0dad;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .game-rules ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+        }
+        .game-rules li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 640px) {
+            .game-title {
+                font-size: 2.5rem;
+            }
+            .question-text {
+                font-size: 1.2rem;
+            }
+            .option-item {
+                flex-basis: calc(50% - 1rem); /* 2 colunas em telas pequenas */
+                max-width: none; /* Remove o max-width fixo */
+                min-height: 100px; /* Ajuste para telas menores */
+                padding: 0.75rem;
+            }
+            .options-container {
+                gap: 1rem;
+            }
+            .option-image {
+                max-width: 60px;
+                max-height: 40px;
+            }
+            .option-text {
+                font-size: 0.85rem;
+            }
+            .progress-bar-container {
+                width: 95%; /* Ajusta a largura da barra em telas pequenas */
+            }
+            .game-rules {
+                padding: 1rem;
+            }
+            .game-rules h3 {
+                font-size: 1.5rem;
+            }
+            .game-rules li {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .option-item {
+                flex-basis: 100%; /* 1 coluna em telas muito pequenas */
+                max-width: 250px; /* Limite para não ficar muito largo em telas muito estreitas */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h2 class="game-title">Quiz Bíblico de Casamento!</h2>
+        <p class="question-text" id="questionText"></p>
+
+        <div class="options-container" id="optionsContainer">
+            <!-- As opções do quiz serão carregadas aqui via JavaScript -->
+        </div>
+
+        <p class="feedback-message" id="feedbackMessage"></p>
+        <p class="explanation-text" id="explanationText"></p>
+        
+        <p class="score-display">Pontuação: <span id="scoreDisplay">0</span></p>
+        <p class="timer-display">Tempo: <span id="timerDisplay">45</span>s</p>
+        <p class="attempts-display">Tentativas: <span id="attemptsDisplay">0</span></p> <!-- Novo elemento para o contador de tentativas -->
+        
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+
+        <!-- Secção de Regras do Jogo -->
+        <div class="game-rules">
+            <h3>Regras do Jogo</h3>
+            <ul>
+                <li>O objetivo é alcançar 100 pontos!</li>
+                <li>Cada resposta correta vale 10 pontos.</li>
+                <li>Cada resposta incorreta ou tempo esgotado tira 10 pontos (a pontuação mínima é 0).</li>
+                <li>Você tem um tempo limitado para responder a cada pergunta. O tempo inicial é de 45 segundos e **diminui exponencialmente (cerca de 10% do tempo restante) a cada resposta correta** (até um mínimo de 5 segundos).</li>
+                <li>Se o tempo acabar antes de responder, você perde 10 pontos e o jogo reinicia automaticamente, retornando à página principal.</li>
+                <li>As perguntas e as posições das respostas aparecem em ordem aleatória.</li>
+                <li>Ao final do quiz ou ao atingir 100 pontos, você pode reiniciar o jogo.</li>
+                <li>**Tentativas:** O número de vezes que você iniciou o quiz é contado.</li> <!-- Nova regra -->
+            </ul>
+        </div>
+
+        <button class="btn-game" id="nextQuestionBtn">Próxima Pergunta</button>
+        <button class="btn-game hidden" id="resetGameBtn">Reiniciar Jogo</button>
+    </div>
+
+    <script>
+        // Definição das perguntas e respostas do quiz
+        const allQuestions = [
+            {
+                scenario: "De acordo com Gênesis 2:24, o que o homem deve fazer ao se casar?",
+                options: [
+                    { text: "Deixar pai e mãe e unir-se à sua mulher", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Gênesis", explanation: "Gênesis 2:24 diz: 'Por essa razão, o homem deixará pai e mãe e se unirá à sua mulher, e eles se tornarão uma só carne.' Isso estabelece a base para o casamento como uma nova unidade familiar." },
+                    { text: "Construir uma grande casa", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Casa" },
+                    { text: "Adquirir muitas riquezas", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Riquezas" }
+                ]
+            },
+            {
+                scenario: "Qual livro da Bíblia é conhecido por descrever o amor de forma poética, muitas vezes citado em casamentos?",
+                options: [
+                    { text: "Salmos", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Salmos" },
+                    { text: "Cântico dos Cânticos", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Cânticos", explanation: "Cântico dos Cânticos (ou Cantares de Salomão) é um livro poético que celebra o amor romântico e a beleza do relacionamento entre um homem e uma mulher." },
+                    { text: "Provérbios", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Provérbios" }
+                ]
+            },
+            {
+                scenario: "Em Efésios 5:25, como os maridos são instruídos a amar suas esposas?",
+                options: [
+                    { text: "Como Cristo amou a igreja e entregou-se por ela", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Cristo", explanation: "Efésios 5:25 instrui: 'Maridos, amem suas mulheres, assim como Cristo amou a igreja e entregou-se por ela'. Isso estabelece um padrão de amor sacrificial e abnegado." },
+                    { text: "Com sabedoria e prudência", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Sabedoria" },
+                    { text: "Com autoridade e poder", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Poder" }
+                ]
+            },
+            {
+                scenario: "Qual é a instrução para as esposas em Efésios 5:22?",
+                options: [
+                    { text: "Sejam submissas a seus maridos, como ao Senhor", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Submissão", explanation: "Efésios 5:22 diz: 'Mulheres, sujeitem-se a seus maridos, como ao Senhor.' Este versículo é frequentemente interpretado no contexto de uma submissão mútua e respeito dentro do casamento cristão." },
+                    { text: "Governem o lar com firmeza", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Governo" },
+                    { text: "Sejam independentes em tudo", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Independência" }
+                ]
+            },
+            {
+                scenario: "De acordo com Hebreus 13:4, como o casamento deve ser considerado?",
+                options: [
+                    { text: "Honroso entre todos, e o leito conjugal sem mácula", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Honra", explanation: "Hebreus 13:4 afirma: 'O casamento deve ser honrado por todos, e o leito conjugal conservado puro, pois Deus julgará os imorais e os adúlteros.' Isso enfatiza a santidade e a pureza do casamento." },
+                    { text: "Um contrato temporário", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Contrato" },
+                    { text: "Apenas para procriação", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Procriação" }
+                ]
+            },
+            {
+                scenario: "Qual é o principal motivo para o casamento, segundo 1 Coríntios 7:2?",
+                options: [
+                    { text: "Para evitar a imoralidade sexual", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Imoralidade", explanation: "1 Coríntios 7:2 diz: 'Mas, por causa da imoralidade, cada um deve ter sua esposa, e cada mulher o seu próprio marido.' O casamento é apresentado como o contexto apropriado para a intimidade sexual." },
+                    { text: "Para ter filhos", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Filhos" },
+                    { text: "Para ter companhia", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Companhia" }
+                ]
+            },
+            {
+                scenario: "Em Mateus 19:6, Jesus fala sobre a união no casamento. O que Ele diz que ninguém deve separar?",
+                options: [
+                    { text: "O que Deus uniu", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Deus", explanation: "Mateus 19:6 afirma: 'Assim, eles já não são dois, mas uma só carne. Portanto, o que Deus uniu, ninguém o separe.' Isso reforça a indissolubilidade do casamento aos olhos de Deus." },
+                    { text: "Os bens materiais", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Bens" },
+                    { text: "As famílias", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Famílias" }
+                ]
+            },
+            {
+                scenario: "Qual a importância da paciência no casamento, segundo 1 Coríntios 13:4?",
+                options: [
+                    { text: "O amor é paciente", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Paciência", explanation: "1 Coríntios 13:4, parte do famoso 'hino ao amor', começa dizendo: 'O amor é paciente, o amor é bondoso...' A paciência é uma virtude essencial para um relacionamento duradouro." },
+                    { text: "A paciência evita discussões", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Discussões" },
+                    { text: "A paciência traz riqueza", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Riqueza" }
+                ]
+            },
+            {
+                scenario: "Em Provérbios 18:22, o que é dito sobre encontrar uma esposa?",
+                options: [
+                    { text: "Quem encontra uma esposa encontra algo bom e alcança o favor do Senhor", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Favor", explanation: "Provérbios 18:22 declara: 'Quem encontra uma esposa encontra algo bom; e alcança o favor do Senhor.' Isso destaca o casamento como uma bênção de Deus." },
+                    { text: "Quem encontra uma esposa encontra muitos problemas", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Problemas" },
+                    { text: "Quem encontra uma esposa deve ser rico", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Rico" }
+                ]
+            },
+            {
+                scenario: "Como Colossenses 3:18-19 instrui esposas e maridos?",
+                options: [
+                    { text: "Esposas, sujeitem-se a seus maridos; maridos, amem suas esposas e não as tratem com amargura", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Colossenses", explanation: "Colossenses 3:18-19 oferece instruções complementares para ambos os cônjuges, enfatizando o respeito mútuo e o amor, evitando a amargura." },
+                    { text: "Esposas, dominem; maridos, obedeçam", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Dominar" },
+                    { text: "Esposas, sejam independentes; maridos, sejam passivos", isCorrect: false, src: "https://placehold.co/80%60x60/4a0e7e/ffffff?text=Passivo" }
+                ]
+            },
+            {
+                scenario: "Em 1 Pedro 3:7, como os maridos são chamados a tratar suas esposas?",
+                options: [
+                    { text: "Com consideração, tratando-as como parte mais frágil e coerdeiras da graça da vida", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Consideração", explanation: "1 Pedro 3:7 exorta os maridos a viverem com suas esposas 'com discernimento, tratando-as com honra, como parte mais frágil e coerdeiras do dom da graça da vida, de forma que não sejam impedidas as suas orações'." },
+                    { text: "Com rigidez e disciplina", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Rigidez" },
+                    { text: "Com indiferença", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Indiferença" }
+                ]
+            },
+            {
+                scenario: "Qual é a base do casamento cristão, segundo 1 João 4:7-8?",
+                options: [
+                    { text: "O amor, pois Deus é amor", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Amor", explanation: "1 João 4:7-8 afirma que 'Deus é amor'. O amor de Deus é o fundamento e o modelo para o amor dentro do casamento cristão." },
+                    { text: "A prosperidade financeira", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Dinheiro" },
+                    { text: "A beleza física", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Beleza" }
+                ]
+            },
+            {
+                scenario: "Em Eclesiastes 4:9-12, o que é dito sobre dois serem melhor que um?",
+                options: [
+                    { text: "Dois são melhor que um, porque têm melhor recompensa do seu trabalho. Se um cair, o outro levanta o seu companheiro.", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Eclesiastes", explanation: "Eclesiastias 4:9-12 destaca a força e o apoio mútuo que vêm da união, sendo um texto frequentemente usado para descrever a parceria no casamento." },
+                    { text: "Dois podem fazer o dobro do trabalho", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Trabalho" },
+                    { text: "Dois são mais felizes que um", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Felicidade" }
+                ]
+            },
+            {
+                scenario: "Qual a importância do perdão no casamento, segundo Efésios 4:32?",
+                options: [
+                    { text: "Sede bondosos e compassivos uns para com os outros, perdoando-vos mutuamente, como Deus vos perdoou em Cristo", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Perdão", explanation: "Efésios 4:32 enfatiza a necessidade do perdão mútuo no casamento, espelhando o perdão que recebemos de Deus através de Cristo." },
+                    { text: "O perdão apaga as memórias ruins", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Memórias" },
+                    { text: "O perdão é opcional", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Opcional" }
+                ]
+            },
+            {
+                scenario: "Em 1 Coríntios 7:3-5, o que é dito sobre a intimidade conjugal?",
+                options: [
+                    { text: "O marido deve cumprir o seu dever conjugal para com a sua mulher, e da mesma forma a mulher para com o seu marido", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Intimidade", explanation: "1 Coríntios 7:3-5 aborda a importância da intimidade física e do respeito mútuo na vida sexual do casal, dentro dos limites do casamento." },
+                    { text: "A intimidade é secundária", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Secundária" },
+                    { text: "A intimidade é apenas para procriação", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Procriação" }
+                ]
+            },
+            {
+                scenario: "Qual é a instrução em Provérbios 31:10 para uma mulher virtuosa?",
+                options: [
+                    { text: "Mulher virtuosa, quem a achará? O seu valor muito excede o de joias preciosas", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Virtuosa", explanation: "Provérbios 31 descreve as qualidades de uma mulher virtuosa, cujo valor é inestimável, sendo um exemplo de esposa e mãe dedicada." },
+                    { text: "Uma mulher virtuosa é aquela que é rica", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Rica" },
+                    { text: "Uma mulher virtuosa é aquela que é bela", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Bela" }
+                ]
+            },
+            {
+                scenario: "Em Malaquias 2:16, o que Deus diz que odeia?",
+                options: [
+                    { text: "O divórcio", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Divórcio", explanation: "Malaquias 2:16 afirma: 'Pois eu odeio o divórcio', diz o Senhor, o Deus de Israel. Este versículo sublinha a santidade do pacto matrimonial aos olhos de Deus." },
+                    { text: "A desobediência", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Desobediência" },
+                    { text: "A idolatria", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Idolatria" }
+                ]
+            },
+            {
+                scenario: "Qual o papel do homem como cabeça da mulher, segundo Efésios 5:23?",
+                options: [
+                    { text: "O marido é o cabeça da mulher, como Cristo é o cabeça da igreja", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Cabeça", explanation: "Efésios 5:23 estabelece que 'o marido é o cabeça da mulher, como também Cristo é o cabeça da igreja'. Isso implica liderança amorosa e sacrificial, não dominação." },
+                    { text: "O homem deve controlar a mulher", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Controle" },
+                    { text: "O homem é superior à mulher", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Superior" }
+                ]
+            },
+            {
+                scenario: "Em Tito 2:4-5, o que as mulheres mais velhas devem ensinar as mais jovens sobre o casamento?",
+                options: [
+                    { text: "A amarem seus maridos e seus filhos, a serem prudentes, puras, trabalhadeiras, bondosas e sujeitas a seus maridos", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Tito", explanation: "Tito 2:4-5 instrui as mulheres mais velhas a ensinarem as mais jovens a viverem de forma a honrar a Deus em seus papéis de esposas e mães." },
+                    { text: "A serem ambiciosas e bem-sucedidas profissionalmente", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Ambição" },
+                    { text: "A serem independentes de seus maridos", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Independência" }
+                ]
+            },
+            {
+                scenario: "Qual a importância da oração em casal, segundo Mateus 18:20?",
+                options: [
+                    { text: "Onde dois ou três estiverem reunidos em meu nome, ali estou eu no meio deles", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Oração", explanation: "Mateus 18:20, embora não específico sobre casamento, é frequentemente aplicado à oração em casal, indicando a presença de Cristo onde os crentes se reúnem em Seu nome." },
+                    { text: "A oração garante riqueza", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Riqueza" },
+                    { text: "A oração é apenas para momentos de crise", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Crise" }
+                ]
+            },
+            {
+                scenario: "Em Romanos 12:10, o que é dito sobre o amor fraternal?",
+                options: [
+                    { text: "Amai-vos cordialmente uns aos outros com amor fraternal, preferindo-vos em honra uns aos outros", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Fraternal", explanation: "Romanos 12:10 encoraja o amor fraternal e a honra mútua, princípios que são fundamentais para um casamento saudável e respeitoso." },
+                    { text: "Ame apenas a si mesmo", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Egoísmo" },
+                    { text: "O amor é uma emoção passageira", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Passageiro" }
+                ]
+            },
+            {
+                scenario: "Qual a importância da alegria no casamento, segundo Provérbios 17:22?",
+                options: [
+                    { text: "O coração alegre é bom remédio, mas o espírito abatido resseca os ossos", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Alegria", explanation: "Provérbios 17:22 destaca o valor da alegria e do bom humor para a saúde e o bem-estar, elementos importantes para um casamento feliz." },
+                    { text: "A alegria é desnecessária", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Desnecessário" },
+                    { text: "A alegria é apenas para os jovens", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Jovens" }
+                ]
+            },
+            {
+                scenario: "Em Filipenses 2:3, o que é incentivado em relação aos outros?",
+                options: [
+                    { text: "Nada façais por partidarismo ou por vanglória, mas com humildade, considerando cada um os outros superiores a si mesmo", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Humildade", explanation: "Filipenses 2:3 encoraja a humildade e a consideração pelos outros, virtudes cruciais para a harmonia e o respeito mútuo dentro do casamento." },
+                    { text: "Busque seus próprios interesses", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Interesses" },
+                    { text: "Seja sempre o primeiro", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Primeiro" }
+                ]
+            },
+            {
+                scenario: "Qual a importância da comunicação no casamento, segundo Tiago 1:19?",
+                options: [
+                    { text: "Todo homem seja pronto para ouvir, tardio para falar, tardio para se irar", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Comunicação", explanation: "Tiago 1:19 oferece princípios para uma comunicação eficaz: ser um bom ouvinte, pensar antes de falar e controlar a raiva, essenciais para resolver conflitos no casamento." },
+                    { text: "Fale sempre o que pensa", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Falar" },
+                    { text: "Evite conversas difíceis", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Evitar" }
+                ]
+            },
+            {
+                scenario: "Em 1 Coríntios 16:14, qual a instrução final para todas as coisas?",
+                options: [
+                    { text: "Todas as vossas coisas sejam feitas com amor", isCorrect: true, src: "https://placehold.co/80x60/e0bbff/4a0e7e?text=Amor", explanation: "1 Coríntios 16:14 resume a essência da vida cristã e do casamento: que todas as ações sejam motivadas pelo amor." },
+                    { text: "Todas as vossas coisas sejam feitas com pressa", isCorrect: false, src: "https://placehold.co/80x60/f7f0ff/4a0e7e?text=Pressa" },
+                    { text: "Todas as vossas coisas sejam feitas com perfeição", isCorrect: false, src: "https://placehold.co/80x60/4a0e7e/ffffff?text=Perfeição" }
+                ]
+            }
+        ];
+
+        // Referências aos elementos do DOM
+        const questionText = document.getElementById('questionText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const feedbackMessage = document.getElementById('feedbackMessage');
+        const explanationText = document.getElementById('explanationText');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+        const resetGameBtn = document.getElementById('resetGameBtn');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const attemptsDisplay = document.getElementById('attemptsDisplay'); // Referência ao novo elemento
+
+        let shuffledQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questionAnswered = false;
+        const winningScore = 100;
+        let timerValue = 0;
+        let initialTimer = 45;
+        const minTimer = 5;
+        let intervalId;
+        let attemptsCount = 0; // Novo contador de tentativas
+
+        // Função para embaralhar um array (Fisher-Yates shuffle)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Atualiza a barra de progresso
+        function updateProgressBar() {
+            const progress = (score / winningScore) * 100;
+            progressBarFill.style.width = `${Math.min(100, progress)}%`;
+        }
+
+        // Inicia o timer para a pergunta atual
+        function startTimer() {
+            timerValue = initialTimer;
+            timerDisplay.textContent = timerValue;
+
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+
+            intervalId = setInterval(() => {
+                timerValue--;
+                timerDisplay.textContent = timerValue;
+
+                if (timerValue <= 0) {
+                    clearInterval(intervalId);
+                    handleTimeUp();
+                }
+            }, 1000);
+        }
+
+        // Para o timer
+        function stopTimer() {
+            clearInterval(intervalId);
+        }
+
+        // Lida com o tempo esgotado
+        function handleTimeUp() {
+            if (questionAnswered) return;
+
+            questionAnswered = true;
+
+            Array.from(optionsContainer.children).forEach(item => {
+                item.style.pointerEvents = 'none';
+            });
+
+            feedbackMessage.textContent = 'Tempo esgotado! Você perdeu esta rodada. 😔';
+            explanationText.textContent = 'Você será redirecionado para a página principal.';
+            score = Math.max(0, score - 10);
+            scoreDisplay.textContent = score;
+            updateProgressBar();
+
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+        }
+
+        // Carrega e exibe a pergunta atual
+        function loadQuestion() {
+            questionAnswered = false;
+            feedbackMessage.textContent = '';
+            explanationText.textContent = '';
+            optionsContainer.innerHTML = '';
+            nextQuestionBtn.classList.add('hidden');
+            resetGameBtn.classList.add('hidden');
+
+            // Verifica condição de vitória antes de carregar a próxima pergunta
+            if (score >= winningScore) {
+                stopTimer();
+                questionText.textContent = 'Parabéns! Você alcançou 100 pontos!';
+                feedbackMessage.textContent = 'Você é um expert em casamentos bíblicos! 🎉';
+                nextQuestionBtn.classList.add('hidden');
+                resetGameBtn.classList.remove('hidden');
+                return;
+            }
+            
+            timerDisplay.textContent = initialTimer;
+
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                const q = shuffledQuestions[currentQuestionIndex];
+                questionText.textContent = q.scenario;
+
+                // Embaralha as opções desta pergunta
+                const shuffledOptions = shuffleArray([...q.options]);
+
+                shuffledOptions.forEach((option, index) => {
+                    const optionItem = document.createElement('div');
+                    optionItem.classList.add('option-item');
+                    // Adiciona um atributo para identificar a resposta correta no DOM
+                    if (option.isCorrect) {
+                        optionItem.dataset.isCorrect = 'true';
+                    }
+
+                    if (option.src) {
+                        const img = document.createElement('img');
+                        img.src = option.src;
+                        img.alt = option.text;
+                        img.classList.add('option-image');
+                        optionItem.appendChild(img);
+                    }
+                    
+                    const text = document.createElement('p');
+                    text.textContent = option.text;
+                    text.classList.add('option-text');
+                    optionItem.appendChild(text);
+
+                    optionsContainer.appendChild(optionItem);
+
+                    // Passa isCorrect diretamente, pois já está no objeto option
+                    optionItem.addEventListener('click', () => checkAnswer(optionItem, option.isCorrect));
+                });
+                startTimer();
+            } else {
+                stopTimer();
+                questionText.textContent = 'Fim do Quiz!';
+                feedbackMessage.textContent = `Você respondeu todas as perguntas. Sua pontuação final é: ${score} de ${winningScore}. Tente novamente para alcançar 100 pontos!`;
+                nextQuestionBtn.classList.add('hidden');
+                resetGameBtn.classList.remove('hidden');
+            }
+        }
+
+        // Verifica a resposta do utilizador
+        function checkAnswer(clickedItem, isCorrect) {
+            if (questionAnswered) return;
+            if (score >= winningScore) return;
+            stopTimer();
+
+            questionAnswered = true;
+
+            Array.from(optionsContainer.children).forEach(item => {
+                item.style.pointerEvents = 'none';
+            });
+
+            if (isCorrect) {
+                clickedItem.classList.add('correct');
+                feedbackMessage.textContent = 'Correto! 🎉';
+                score += 10;
+                initialTimer = Math.max(minTimer, Math.round(initialTimer * 0.9)); 
+            } else {
+                clickedItem.classList.add('incorrect');
+                feedbackMessage.textContent = 'Incorreto. A resposta certa está marcada. 🤔';
+                score = Math.max(0, score - 10);
+                const correctOptionElement = optionsContainer.querySelector('[data-is-correct="true"]');
+                if (correctOptionElement) {
+                    correctOptionElement.classList.add('correct');
+                }
+            }
+            
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            const correctOption = currentQuestion.options.find(opt => opt.isCorrect);
+            if (correctOption && correctOption.explanation) {
+                explanationText.textContent = `Explicação: ${correctOption.explanation}`;
+            }
+
+            scoreDisplay.textContent = score;
+            updateProgressBar();
+
+            if (score >= winningScore) {
+                loadQuestion();
+            } else {
+                nextQuestionBtn.classList.remove('hidden');
+            }
+        }
+
+        // Avança para a próxima pergunta
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        // Reinicia o jogo
+        function resetGame() {
+            currentQuestionIndex = 0;
+            score = 0;
+            initialTimer = 45;
+            attemptsCount++; // Incrementa o contador de tentativas ao reiniciar
+            scoreDisplay.textContent = score;
+            attemptsDisplay.textContent = attemptsCount; // Atualiza o display de tentativas
+            updateProgressBar();
+            shuffledQuestions = shuffleArray([...allQuestions]);
+            loadQuestion();
+        }
+
+        // Event Listeners
+        nextQuestionBtn.addEventListener('click', nextQuestion);
+        resetGameBtn.addEventListener('click', resetGame);
+
+        // Inicializa o jogo ao carregar a página
+        window.onload = () => {
+            // Tenta carregar o contador de tentativas do localStorage
+            const storedAttempts = localStorage.getItem('quizAttempts');
+            if (storedAttempts) {
+                attemptsCount = parseInt(storedAttempts);
+            } else {
+                attemptsCount = 0; // Inicia em 0 se não houver tentativas salvas
+            }
+            attemptsDisplay.textContent = attemptsCount; // Garante que o display seja atualizado no carregamento
+
+            resetGame(); // Inicia o jogo embaralhando as perguntas
+        };
+
+        // Salva o contador de tentativas no localStorage antes de sair da página
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('quizAttempts', attemptsCount);
+        });
+    </script>
+</body>
+</html>
