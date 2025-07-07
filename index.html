@@ -187,32 +187,6 @@
             border: 0;
             overflow: hidden;
         }
-
-        /* Estilos para os contentores dos iframes do Google Forms */
-        .rsvp-iframe-container {
-            min-height: 700px; /* Altura mínima padrão para telas maiores */
-        }
-        .guestbook-iframe-container {
-            min-height: 376px; /* Altura mínima padrão para telas maiores */
-        }
-
-        @media (max-width: 768px) {
-            .rsvp-iframe-container {
-                min-height: 750px; /* Aumenta a altura mínima para tablets */
-            }
-            .guestbook-iframe-container {
-                min-height: 400px; /* Aumenta a altura mínima para tablets */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .rsvp-iframe-container {
-                min-height: 600px; /* Aumenta a altura mínima para telemóveis */
-            }
-            .guestbook-iframe-container {
-                min-height: 350px; /* Aumenta a altura mínima para telemóveis */
-            }
-        }
     </style>
 </head>
 <body>
@@ -257,7 +231,7 @@
 
             <p class="text-lg mb-6 text-gray-700">Junte-se a nós para testemunhar o início de um novo capítulo em nossas vidas.</p>
             <div class="hero-buttons flex justify-center items-center gap-4">
-                <a href="#rsvp" class="btn-primary inline-block">Confirmar Presença</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Confirmar Presença</a>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento%20Alexandre%20%26%20Karina&dates=20251025T170000/20251025T180000&details=Celebre%20a%20uni%C3%A3o%20em%20matrim%C3%B3nio%20de%20Alexandre%20e%20Karina.%20Junte-se%20a%20n%C3%B3s%20para%20testemunhar%20o%20in%C3%ADcio%20de%20um%20novo%20cap%C3%ADtulo%20em%20nossas%20vidas.&location=2%C2%AA%20Igreja%20Batista%20de%20Cidade%20Dutra%2C%20Rua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010&sf=true&output=xml" target="_blank" class="btn-secondary inline-block">Adicionar ao Calendário</a>
             </div>
         </div>
@@ -284,7 +258,7 @@
             <p class="text-2xl font-bold mb-4 text-purple-800">25 de outubro de 2025, às 17h</p>
             <p class="text-lg mb-2 text-gray-700"><strong>Local:</strong> 2ª Igreja Batista de Cidade Dutra</p>
             <p class="text-lg mb-2 text-gray-700"><strong>Celebrante:</strong> Pastor Fernando Junior</p>
-            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divisão de Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
+            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divis%C3%A3o%20de%20Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
             <!-- Incorporação do Google Maps -->
             <div class="relative w-full h-96 mt-8 rounded-xl overflow-hidden shadow-lg">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -293,14 +267,12 @@
         </div>
     </section>
 
-    <!-- Secção RSVP - Agora usando Formulários Google -->
+    <!-- Secção RSVP - Agora com botão para o Formulário Google -->
     <section id="rsvp" class="py-16 bg-gradient-to-b from-e0bbff to-f7f0ff">
         <div class="container mx-auto px-4 text-center max-w-2xl">
             <h2 class="section-title">Confirme Sua Presença</h2>
             <p class="text-lg mb-8 text-gray-800">Mal podemos esperar para compartilhar este momento especial com você! Por favor, confirme sua presença através do formulário abaixo:</p>
-            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl rsvp-iframe-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes">Carregando…</iframe>
-            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Acessar Formulário de Confirmação</a>
         </div>
     </section>
 
@@ -318,14 +290,12 @@
         </div>
     </section>
 
-    <!-- Secção Livro de Visitas - Agora usando Formulários Google -->
+    <!-- Secção Livro de Visitas - Agora com botão para o Formulário Google -->
     <section id="guestbook" class="py-16 bg-white">
         <div class="container mx-auto px-4 text-center max-w-2xl">
             <h2 class="section-title">Livro de Visitas ✨</h2>
             <p class="text-lg mb-8 text-gray-800">Deixe uma mensagem especial para os noivos através do formulário abaixo:</p>
-            <div class="relative w-full overflow-hidden rounded-2xl shadow-xl guestbook-iframe-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes">Carregando…</iframe>
-            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Acessar Formulário de Visitas</a>
         </div>
     </section>
 
