@@ -67,7 +67,6 @@
             border-radius: 0.75rem;
             transition: background-color 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Removido display: inline-flex; align-items: center; justify-content: center; */
         }
         .btn-primary:hover {
             background-color: #9b59b6; /* Roxo mais claro ao passar o mouse */
@@ -175,6 +174,18 @@
         }
         .navbar-link:hover {
             background-color: rgba(142, 68, 173, 0.2); /* Roxo mais claro e transparente ao passar o mouse */
+        }
+        /* Estilo para o iframe do áudio */
+        .audio-player-container {
+            width: 100%; /* Ocupa a largura total */
+            max-width: 530px; /* Limita a largura máxima para desktop */
+            margin: 1rem auto 0.5rem auto; /* Centraliza e adiciona margens */
+        }
+        .audio-player-container iframe {
+            width: 100%;
+            height: 60px;
+            border: 0;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -302,9 +313,14 @@
 
     <!-- Rodapé -->
     <footer class="bg-purple-900 text-white py-8 text-center rounded-t-2xl footer-section">
-        <p>&copy; 2025 Alexandre & Karina. Todos os direitos reservados.</p>
-        <p class="text-sm mt-2">Criado com carinho para o nosso dia especial.</p>
-        <p class="visit-counter">Visitas: <span id="visitCounter">0</span></p>
+        <div class="flex flex-col items-center justify-center px-4">
+            <div class="audio-player-container">
+                <iframe src='https://www.4shared.com/web/embed/audio/file/c-ee-mLSjq?type=MINI&widgetWidth=530&playlistHeight=0&widgetRid=761340863995' style='overflow:hidden;height:60px;width:100%;border: 0;margin:0;'></iframe>
+            </div>
+            <p>&copy; 2025 Alexandre & Karina. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Criado com carinho para o nosso dia especial.</p>
+            <p class="visit-counter">Visitas: <span id="visitCounter">0</span></p>
+        </div>
     </footer>
 
     <script>
