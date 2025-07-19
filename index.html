@@ -95,6 +95,45 @@
             color: #5a118e;
         }
 
+        /* Estilos da barra de progresso */
+        .progress-bar-container-wedding {
+            width: 80%;
+            height: 6px; /* Mais estreito */
+            background-color: #CCCCFF; /* Fundo lilás claro */
+            border-radius: 10px;
+            margin-top: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative; /* Essencial para posicionar os elementos */
+            margin-left: auto; /* Centraliza a barra */
+            margin-right: auto; /* Centraliza a barra */
+        }
+        .progress-bar-fill-wedding {
+            height: 100%;
+            width: 100%; /* Começa em 100% para esvaziar */
+            background-color: #A569BD; /* Lilás mais claro para o preenchimento */
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+        .progress-icon { /* Classe genérica para os ícones na barra */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); /* Centraliza o elemento verticalmente */
+            z-index: 10; /* Garante que os elementos fiquem acima da barra */
+            pointer-events: none; /* Não interfere com cliques */
+        }
+        .emoji-bride { /* Imagem dos noivos */
+            width: 25px; /* Tamanho ajustado para menor */
+            height: auto;
+            left: -12.5px; /* Posição inicial na extremidade (metade da largura para fora) */
+            transition: left 0.5s ease-in-out; /* Transição suave para o movimento */
+        }
+        .church-image { /* Imagem da igreja */
+            width: 35px; /* Tamanho ajustado */
+            height: auto;
+            right: -17.5px; /* Posição na extremidade (metade da largura para fora) */
+        }
+
+
         /* Ajustes responsivos */
         @media (max-width: 768px) {
             .couple-names {
@@ -118,6 +157,9 @@
                 flex-direction: column;
                 align-items: center;
             }
+            .progress-bar-container-wedding {
+                width: 90%; /* Ajusta a largura em telas menores */
+            }
         }
         @media (max-width: 480px) {
             .couple-names {
@@ -134,6 +176,14 @@
             }
             .hero-overlay {
                 padding: 1.5rem;
+            }
+            .emoji-bride {
+                width: 20px; /* Ajuste para telas muito pequenas */
+                left: -10px; /* Ajuste de posicionamento */
+            }
+            .church-image {
+                width: 25px; /* Ajuste para telas muito pequenas */
+                right: -12.5px; /* Ajuste de posicionamento */
             }
         }
 
@@ -232,6 +282,13 @@
                 </div>
             </div>
 
+            <!-- Barra de Progresso do Casamento com Imagem dos Noivos e Imagem da Igreja -->
+            <div class="progress-bar-container-wedding">
+                <div class="progress-bar-fill-wedding" id="weddingProgressBarFill"></div>
+                <img src="Noivos.png" alt="Noivos" class="progress-icon emoji-bride" id="brideImage"> <!-- Imagem dos noivos -->
+                <img src="igreja.png" alt="Igreja" class="progress-icon church-image" id="churchImage"> <!-- Imagem da igreja -->
+            </div>
+
             <p class="text-lg mb-6 text-gray-700">Junte-se a nós para testemunhar o início de um novo capítulo em nossas vidas.</p>
             <div class="hero-buttons flex justify-center items-center gap-4">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Confirmar Presença</a>
@@ -262,12 +319,12 @@
             <p class="text-2xl font-bold mb-4 text-purple-800">25 de outubro de 2025, às 18h</p>
             <p class="text-lg mb-2 text-gray-700"><strong>Local:</strong> 2ª Igreja Batista de Cidade Dutra</p>
             <p class="text-lg mb-2 text-gray-700"><strong>Celebrante:</strong> Pastor Fernando Junior</p>
-            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divisão de Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
+            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divis%C3%A3o%20de%20Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
             <!-- Incorporação do Google Maps -->
             <div class="relative w-full h-96 mt-8 rounded-xl overflow-hidden shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" target="_blank" class="btn-primary inline-block mt-4">Abrir no Google Maps</a>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" target="_blank" class="btn-primary inline-block mt-4">Abrir no Google Maps</a>
         </div>
     </section>
 
@@ -325,11 +382,18 @@
 
     <script>
         // Lógica do Cronómetro
-        const weddingDate = new Date("October 25, 2025 18:00:00").getTime(); // Horário alterado para 18:00
+        const weddingDate = new Date("October 25, 2025 18:00:00").getTime(); // Horário do casamento
+        const startDate = new Date().getTime(); // Data de início para o cálculo da barra de progresso
+        const totalDuration = weddingDate - startDate; // Duração total do período até o casamento (em ms)
+
+        const weddingProgressBarFill = document.getElementById('weddingProgressBarFill'); // Referência à barra de progresso
+        const brideImage = document.getElementById('brideImage'); // Referência à imagem dos noivos
+        const churchImage = document.getElementById('churchImage'); // Referência à imagem da igreja
 
         const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+            const currentTime = new Date().getTime();
+            const distance = weddingDate - currentTime; // Tempo restante
+            const elapsed = currentTime - startDate; // Tempo decorrido
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -341,9 +405,29 @@
             document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
             document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
 
+            // Atualiza a barra de progresso do casamento e a posição da imagem dos noivos
+            if (totalDuration > 0) { // Evita divisão por zero se a data já passou
+                // Porcentagem do tempo RESTANTE para a barra (começa em 100%, vai para 0%)
+                let remainingPercentage = (distance / totalDuration) * 100;
+                remainingPercentage = Math.min(100, Math.max(0, remainingPercentage)); // Garante entre 0 e 100
+
+                // Porcentagem do tempo DECORRIDO para o movimento da imagem dos noivos (começa em 0%, vai para 100%)
+                let elapsedPercentage = (elapsed / totalDuration) * 100;
+                elapsedPercentage = Math.min(100, Math.max(0, elapsedPercentage)); // Garante entre 0 e 100
+
+                weddingProgressBarFill.style.width = `${remainingPercentage}%`; // Largura da barra diminui
+                // A imagem dos noivos se move da esquerda para a direita
+                brideImage.style.left = `${elapsedPercentage}%`;
+            } else {
+                weddingProgressBarFill.style.width = '0%'; // Barra completamente vazia
+                brideImage.style.left = '100%'; // Imagem dos noivos na igreja
+            }
+
             if (distance < 0) {
                 clearInterval(x);
                 document.querySelector(".countdown-timer").innerHTML = "<p class='text-3xl font-bold text-purple-800'>O GRANDE DIA CHEGOU!</p>";
+                weddingProgressBarFill.style.width = '0%'; // Garante que a barra esteja vazia
+                brideImage.style.left = '100%'; // Garante que a imagem dos noivos esteja na igreja
             }
         }, 1000);
 
