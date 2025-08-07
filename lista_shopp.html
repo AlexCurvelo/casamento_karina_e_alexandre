@@ -11,28 +11,33 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Cor de fundo suave para combinar com o tema */
+            background-color: #f3f4f6; /* Fundo do corpo agora é cinza claro */
         }
         /* Estilo para a animação do botão ao passar o mouse */
         .btn-hover-effect:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+        /* Classe específica para o fundo do cabeçalho */
+        .bg-bosque-header {
+            /* Adiciona a imagem de fundo do bosque como um arquivo local */
+            background-image: url('Convite_Base_BKG.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
         /* Adiciona um estilo de posicionamento para o cabeçalho para que a animação funcione */
         header {
             position: relative;
-            overflow: hidden; /* Garante que as borboletas não saiam do cabeçalho */
+            overflow: hidden;
         }
-        /* Classe para as borboletas */
+        /* Classe para as borboletas agora usa uma imagem */
         .butterfly {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 20px; /* Tamanho da borboleta */
-            height: 20px;
-            background-image: url('https://placehold.co/20x20/FFDAB9/FFA07A?text=🦋'); /* Imagem de uma borboleta */
-            background-size: cover;
-            opacity: 0.8;
+            width: 40px; /* Aumenta um pouco o tamanho da imagem da borboleta */
+            height: 40px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* Adiciona uma sombra para destacar a borboleta */
             animation: fly linear infinite;
         }
         /* Animação de voo para as borboletas */
@@ -60,27 +65,27 @@
             }
         }
         /* Variações da animação para as borboletas */
-        .butterfly:nth-child(1) {
+        .butterfly-1 {
             animation-duration: 20s;
             animation-delay: 0s;
             top: 10%;
         }
-        .butterfly:nth-child(2) {
+        .butterfly-2 {
             animation-duration: 25s;
             animation-delay: 2s;
             top: 30%;
         }
-        .butterfly:nth-child(3) {
+        .butterfly-3 {
             animation-duration: 18s;
             animation-delay: 5s;
             top: 50%;
         }
-        .butterfly:nth-child(4) {
+        .butterfly-4 {
             animation-duration: 22s;
             animation-delay: 8s;
             top: 70%;
         }
-        .butterfly:nth-child(5) {
+        .butterfly-5 {
             animation-duration: 30s;
             animation-delay: 10s;
             top: 90%;
@@ -90,14 +95,15 @@
 <body class="text-gray-800">
 
     <!-- Cabeçalho da página -->
-    <header class="bg-white shadow-lg rounded-b-3xl p-6 md:p-10 mb-8 max-w-7xl mx-auto">
+    <header class="bg-white shadow-lg rounded-b-3xl p-6 md:p-10 mb-8 max-w-7xl mx-auto bg-bosque-header">
         <!-- Contêiner para as borboletas animadas -->
         <div class="absolute inset-0 z-0">
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
+            <!-- As borboletas agora são imagens -->
+            <img src="pngegg.png" alt="Borboleta 1" class="butterfly butterfly-1">
+            <img src="pngegg.png" alt="Borboleta 2" class="butterfly butterfly-2">
+            <img src="pngegg.png" alt="Borboleta 3" class="butterfly butterfly-3">
+            <img src="pngegg.png" alt="Borboleta 4" class="butterfly butterfly-4">
+            <img src="pngegg.png" alt="Borboleta 5" class="butterfly butterfly-5">
         </div>
         <div class="text-center relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold text-orange-500 mb-2 animate-fade-in">
@@ -106,7 +112,7 @@
             <h2 class="text-xl md:text-2xl font-light text-gray-700">
                 Nossa Lista de Presentes de Casamento
             </h2>
-            <!-- Logo da Shopee atualizado com o novo URL -->
+            <!-- Logo da Shopee -->
             <img src="https://i.pinimg.com/1200x/d7/72/84/d77284d5eef098bfd48af911bd71a038.jpg"
                  onerror="this.src='https://placehold.co/100x40/e2e8f0/0f172a?text=Shopee'"
                  alt="Logo da Shopee"
