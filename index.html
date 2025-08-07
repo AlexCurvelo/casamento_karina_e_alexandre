@@ -1,406 +1,496 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Presentes - Karina & Alexandre</title>
-    <!-- Inclui a biblioteca Tailwind CSS para estilização rápida e responsiva -->
+    <title>Alexandre & Karina - Nosso Casamento</title>
+    <!-- Favicon -->
+    <link rel="icon" href="faviconKeA.png" type="image/png">
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        /* Define a fonte Inter como padrão para a página */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        /* Estilos personalizados para combinar com a estética do convite */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Cor de fundo suave para combinar com o tema */
+            background-color: #f7f0ff; /* Fundo roxo claro */
+            color: #4a0e7e; /* Texto roxo escuro */
+            scroll-behavior: smooth; /* Rolagem suave para os links do menu */
         }
-        /* Estilo para a animação do botão ao passar o mouse */
-        .btn-hover-effect:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        /* Adiciona um estilo de posicionamento para o cabeçalho para que a animação funcione */
-        header {
-            position: relative;
-            overflow: hidden; /* Garante que as borboletas não saiam do cabeçalho */
-        }
-        /* Classe para as borboletas */
-        .butterfly {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 20px; /* Tamanho da borboleta */
-            height: 20px;
-            background-image: url('https://placehold.co/20x20/FFDAB9/FFA07A?text=🦋'); /* Imagem de uma borboleta */
+        .hero-section {
+            /* Usando 'Convite_Base_BKG.jpg' como o fundo principal para a secção hero, posicionado no topo */
+            background-image: url('Convite_Base_BKG.jpg');
             background-size: cover;
-            opacity: 0.8;
-            animation: fly linear infinite;
+            background-position: top;
+            background-repeat: no-repeat;
+            position: relative;
+            padding: 4rem 1rem;
+            min-height: 100vh; /* Altura total da viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
-        /* Animação de voo para as borboletas */
-        @keyframes fly {
-            0% {
-                transform: translateX(0) translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            20% {
-                transform: translateX(50vw) translateY(-20px) rotate(15deg);
-                opacity: 1;
-            }
-            40% {
-                transform: translateX(80vw) translateY(50px) rotate(-10deg);
-            }
-            60% {
-                transform: translateX(30vw) translateY(100px) rotate(20deg);
-            }
-            80% {
-                transform: translateX(70vw) translateY(150px) rotate(-5deg);
-            }
-            100% {
-                transform: translateX(100vw) translateY(200px) rotate(0deg);
-                opacity: 0;
-            }
+        .hero-overlay {
+            background-color: rgba(255, 255, 255, 0.7); /* Sobreposição branca semi-transparente */
+            border-radius: 1.5rem; /* Cantos arredondados */
+            padding: 2rem;
+            max-width: 90%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px); /* Efeito de desfoque suave */
         }
-        /* Variações da animação para as borboletas */
-        .butterfly:nth-child(1) {
-            animation-duration: 20s;
-            animation-delay: 0s;
-            top: 10%;
+        .couple-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem; /* Fonte maior para os nomes */
+            color: #6a0dad; /* Roxo real */
+            margin-bottom: 1rem;
+            line-height: 1;
         }
-        .butterfly:nth-child(2) {
-            animation-duration: 25s;
-            animation-delay: 2s;
-            top: 30%;
+        .quote {
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #5a118e;
+            margin-bottom: 2rem;
         }
-        .butterfly:nth-child(3) {
-            animation-duration: 18s;
-            animation-delay: 5s;
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #6a0dad;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #8e44ad; /* Roxo médio */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: #9b59b6; /* Roxo mais claro ao passar o mouse */
+        }
+        .btn-secondary { /* Estilo para o novo botão do calendário */
+            background-color: #a0a0a0; /* Cor acinzentada */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover {
+            background-color: #b0b0b0; /* Cinza mais claro ao passar o mouse */
+        }
+        .countdown-timer span {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #6a0dad;
+            display: block;
+            line-height: 1;
+        }
+        .countdown-timer div {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #5a118e;
+        }
+
+        /* Estilos da barra de progresso */
+        .progress-bar-container-wedding {
+            width: 80%;
+            height: 6px; /* Mais estreito */
+            background-color: #CCCCFF; /* Fundo lilás claro */
+            border-radius: 10px;
+            margin-top: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative; /* Essencial para posicionar os elementos */
+            margin-left: auto; /* Centraliza a barra */
+            margin-right: auto; /* Centraliza a barra */
+        }
+        .progress-bar-fill-wedding {
+            height: 100%;
+            width: 100%; /* Começa em 100% para esvaziar */
+            background-color: #A569BD; /* Lilás mais claro para o preenchimento */
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+        .progress-icon { /* Classe genérica para os ícones na barra */
+            position: absolute;
             top: 50%;
+            transform: translateY(-50%); /* Centraliza o elemento verticalmente */
+            z-index: 10; /* Garante que os elementos fiquem acima da barra */
+            pointer-events: none; /* Não interfere com cliques */
         }
-        .butterfly:nth-child(4) {
-            animation-duration: 22s;
-            animation-delay: 8s;
-            top: 70%;
+        .emoji-bride { /* Imagem dos noivos */
+            width: 25px; /* Tamanho ajustado para menor */
+            height: auto;
+            left: -12.5px; /* Posição inicial na extremidade (metade da largura para fora) */
+            transition: left 0.5s ease-in-out; /* Transição suave para o movimento */
         }
-        .butterfly:nth-child(5) {
-            animation-duration: 30s;
-            animation-delay: 10s;
-            top: 90%;
+        .church-image { /* Imagem da igreja */
+            width: 35px; /* Tamanho ajustado */
+            height: auto;
+            right: -17.5px; /* Posição na extremidade (metade da largura para fora) */
         }
+
+
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .couple-names {
+                font-size: 3.5rem;
+            }
+            .quote {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .countdown-timer span {
+                font-size: 1.8rem;
+            }
+            .hero-buttons {
+                flex-direction: column; /* Empilha os botões verticalmente em telas pequenas */
+                gap: 1rem; /* Espaço entre os botões empilhados */
+            }
+            /* Ajuste para o menu em telas pequenas */
+            .navbar .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .progress-bar-container-wedding {
+                width: 90%; /* Ajusta a largura em telas menores */
+            }
+        }
+        @media (max-width: 480px) {
+            .couple-names {
+                font-size: 2.5rem;
+            }
+            .quote {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .countdown-timer span {
+                font-size: 1.5rem;
+            }
+            .hero-overlay {
+                padding: 1.5rem;
+            }
+            .emoji-bride {
+                width: 20px; /* Ajuste para telas muito pequenas */
+                left: -10px; /* Ajuste de posicionamento */
+            }
+            .church-image {
+                width: 25px; /* Ajuste para telas muito pequenas */
+                right: -12.5px; /* Ajuste de posicionamento */
+            }
+        }
+
+        /* Imagem de fundo do rodapé */
+        .footer-section {
+            background-image: url('footpage.png'); /* Usando a imagem footpage.png */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        /* Estilo para o contador de visitas */
+        .visit-counter {
+            font-size: 0.75rem; /* Tamanho da fonte pequeno */
+            color: rgba(255, 255, 255, 0.7); /* Cor mais clara para ser discreto */
+            margin-top: 0.5rem;
+        }
+
+        /* Estilos para o menu de navegação */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para o menu */
+            backdrop-filter: blur(8px); /* Efeito de desfoque para o fundo */
+            color: #4a0e7e; /* Cor do texto do menu */
+            padding: 1rem 0;
+            position: fixed; /* Menu fixo no topo */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Garante que o menu fique acima de outros elementos */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out; /* Transição para o efeito de ocultar/mostrar */
+        }
+        .navbar-hidden {
+            transform: translateY(-100%); /* Move o menu para cima para ocultá-lo */
+        }
+        .navbar-link {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .navbar-link:hover {
+            background-color: rgba(142, 68, 173, 0.2); /* Roxo mais claro e transparente ao passar o mouse */
+        }
+        /* Estilo para o iframe do áudio */
+        .audio-player-container {
+            width: 100%; /* Ocupa a largura total */
+            max-width: 530px; /* Limita a largura máxima para desktop */
+            margin: 1rem auto 0.5rem auto; /* Centraliza e adiciona margens */
+        }
+        .audio-player-container iframe {
+            width: 100%;
+            height: 60px;
+            border: 0;
+            overflow: hidden;
+        }
+
+        /* Removidos os estilos para o Modal do Quiz */
     </style>
 </head>
-<body class="text-gray-800">
+<body>
 
-    <!-- Cabeçalho da página -->
-    <header class="bg-white shadow-lg rounded-b-3xl p-6 md:p-10 mb-8 max-w-7xl mx-auto">
-        <!-- Contêiner para as borboletas animadas -->
-        <div class="absolute inset-0 z-0">
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
-            <div class="butterfly"></div>
+    <!-- Secção Menu de Navegação -->
+    <nav class="navbar" id="mainNavbar">
+        <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-4">
+            <a href="#hero-section" class="navbar-link">Início</a>
+            <a href="#invitation-details" class="navbar-link">Convite</a>
+            <a href="#event-details" class="navbar-link">O Grande Dia</a>
+            <a href="#rsvp" class="navbar-link">Confirmar Presença</a>
+            <a href="#gift-list" class="navbar-link">Lista de Presentes</a>
+            <a href="#guestbook" class="navbar-link">Livro de Visitas</a>
+            <a href="quiz_de_casamento.html" target="_blank" class="navbar-link">Jogar Quiz</a>
         </div>
-        <div class="text-center relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold text-orange-500 mb-2 animate-fade-in">
-                Karina & Alexandre
-            </h1>
-            <h2 class="text-xl md:text-2xl font-light text-gray-700">
-                Nossa Lista de Presentes de Casamento
-            </h2>
-            <!-- Logo da Shopee atualizado com o novo URL -->
-            <img src="https://i.pinimg.com/1200x/d7/72/84/d77284d5eef098bfd48af911bd71a038.jpg"
-                 onerror="this.src='https://placehold.co/100x40/e2e8f0/0f172a?text=Shopee'"
-                 alt="Logo da Shopee"
-                 class="h-10 mx-auto my-4">
-            <p class="mt-4 max-w-2xl mx-auto text-gray-600">
-                Seu carinho e presença já são o nosso maior presente! Se você quiser nos ajudar a montar a nossa casa, preparamos uma lista de itens que adoraríamos ter.
-            </p>
+    </nav>
+
+    <!-- Secção Hero -->
+    <section id="hero-section" class="hero-section">
+        <div class="hero-overlay">
+            <img src="—Pngtree—a pair of beautiful golden_5254746.png" alt="Anéis de Casamento Dourados" class="w-24 h-auto mx-auto mb-4">
+            <h1 class="couple-names">Alexandre & Karina</h1>
+            <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade." <br> Eclesiastias 4:12</p>
+
+            <div class="countdown-timer flex justify-center items-center space-x-4 mb-8">
+                <div class="text-center">
+                    <span id="days">00</span>
+                    <div>Dias</div>
+                </div>
+                <div class="text-center">
+                    <span id="hours">00</span>
+                    <div>Horas</div>
+                </div>
+                <div class="text-center">
+                    <span id="minutes">00</span>
+                    <div>Minutos</div>
+                </div>
+                <div class="text-center">
+                    <span id="seconds">00</span>
+                    <div>Segundos</div>
+                </div>
+            </div>
+
+            <!-- Barra de Progresso do Casamento com Imagem dos Noivos e Imagem da Igreja -->
+            <div class="progress-bar-container-wedding">
+                <div class="progress-bar-fill-wedding" id="weddingProgressBarFill"></div>
+                <img src="Noivos.png" alt="Noivos" class="progress-icon emoji-bride" id="brideImage"> <!-- Imagem dos noivos -->
+                <img src="igreja.png" alt="Igreja" class="progress-icon church-image" id="churchImage"> <!-- Imagem da igreja -->
+            </div>
+
+            <p class="text-lg mb-6 text-gray-700">Junte-se a nós para testemunhar o início de um novo capítulo em nossas vidas.</p>
+            <div class="hero-buttons flex justify-center items-center gap-4">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Confirmar Presença</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento%20Alexandre%20%26%20Karina&dates=20251025T180000/20251025T190000&details=Celebre%20a%20uni%C3%A3o%20em%20matrim%C3%B3nio%20de%20Alexandre%20e%20Karina.%20Junte-se%20a%20n%C3%B3s%20para%20testemunhar%20o%20in%C3%ADcio%20de%20um%20novo%20cap%C3%ADtulo%20em%20nossas%20vidas.&location=2%C2%AA%20Igreja%20Batista%20de%20Cidade%20Dutra%2C%20Rua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010&sf=true&output=xml" target="_blank" class="btn-secondary inline-block">Adicionar ao Calendário</a>
+                <a href="quiz_de_casamento.html" target="_blank" class="btn-primary inline-block">Jogar Quiz de Casamento</a>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Seção principal com os cartões dos produtos -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <!-- Grid responsivo para os cartões de produtos -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Cartão do Produto: Kit Potes de Vidro -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3xthku507y00f.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit de potes de vidro"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Conjunto De Potes 10 Peças Vidro</h3>
-                    <p class="text-gray-600 mb-4">R$27,80 - R$49,80</p>
-                    <a href="https://s.shopee.com.br/6fWuzH6RYj?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
+    <!-- Secção Detalhes do Convite -->
+    <section id="invitation-details" class="py-16 bg-gradient-to-b from-f7f0ff to-e0bbff">
+        <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row items-center justify-center md:justify-between">
+            <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                <h2 class="section-title">Nosso Convite</h2>
+                <p class="text-lg mb-4 text-gray-800">Com a benção de Deus e a alegria de nossos pais, Elisabete C. Curvelo, Norma M. G. Silva, e em memória: Isaias Curvelo e Edenyr W. Silva,</p>
+                <p class="text-xl font-semibold text-gray-900">Temos a imensa felicidade de convidar você para celebrar a nossa união em matrimônio.</p>
             </div>
-
-            <!-- Cartão do Produto: Capa para Colchão -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uudff.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Capa para colchão impermeável"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Capa Para Colchão Impermeável</h3>
-                    <p class="text-gray-600 mb-4">R$23,90 - R$54,90</p>
-                    <a href="https://s.shopee.com.br/7KmbmYb4Bh?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end">
+                <img src="nosdois.png" alt="Alexandre e Karina" class="rounded-xl shadow-lg max-w-full h-auto">
             </div>
-
-            <!-- Cartão do Produto: Panos de Microfibra -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3rseadtr5fc80.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit 10 Panos De Limpeza Microfibra"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit 10 Panos De Limpeza Microfibra</h3>
-                    <p class="text-gray-600 mb-4">R$18,88</p>
-                    <a href="https://s.shopee.com.br/4q5GoIpIfO?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Varal de Chão -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m6se7iwi7hpja5.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Varal de chão dobrável"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Varal De Chão 3 Andares Dobrável</h3>
-                    <p class="text-gray-600 mb-4">R$84,89 - R$89,89</p>
-                    <a href="https://s.shopee.com.br/8ALinvaF06?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Forro Air Fryer -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lw67pc8qet9xde.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit 6 peças de silicone para Air Fryer"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">6 Peças/Conjunto Forro Air Fryer</h3>
-                    <p class="text-gray-600 mb-4">R$19,99</p>
-                    <a href="https://s.shopee.com.br/5pxo1lTWAo?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Air Fryer Oven -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mad0e5vyi7llb2.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Fritadeira Elétrica Air Fryer Oven Mondial"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Fritadeira Elétrica Air Fryer Oven</h3>
-                    <p class="text-gray-600 mb-4">R$598,90</p>
-                    <a href="https://s.shopee.com.br/10157IuJZ?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Mixer Elétrico -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/sg-11134201-7ra15-m50cpye62n9qb3.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Batedor Misturador Mixer Elétrico"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Batedor Misturador Mixer Elétrico</h3>
-                    <p class="text-gray-600 mb-4">R$23,99 - R$26,69</p>
-                    <a href="https://s.shopee.com.br/4flqdu95c9?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Frigideira Antiaderente -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ly43ux2obcpja4.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Frigideira Antiaderente 3 em 1"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Frigideira Antiaderente 3 em 1</h3>
-                    <p class="text-gray-600 mb-4">R$38,99 - R$39,99</p>
-                    <a href="https://s.shopee.com.br/5feNpmM4cX?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Cobertor Manta Casal -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ma2tl6b8r4si05.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Cobertor Manta Casal Macio"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Cobertor Manta Casal Macio</h3>
-                    <p class="text-gray-600 mb-4">R$44,90</p>
-                    <a href="https://s.shopee.com.br/2LNvriOLe0?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Coberdrom Casal Queen -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyxmxoo3fh35c2.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Coberdrom Casal Queen"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Coberdrom Casal Queen Dupla Face</h3>
-                    <p class="text-gray-600 mb-4">R$109,90 - R$139,90</p>
-                    <a href="https://s.shopee.com.br/7V621Z8zWm?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Jogo de Lençol -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9kc2ptvmb5uff.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Jogo de Lençol 03 Peças"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo de Lençol 03 Peças 400 Fios</h3>
-                    <p class="text-gray-600 mb-4">R$19,90 - R$45,99</p>
-                    <a href="https://s.shopee.com.br/9pTwoMZ9r0?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Jogo de Taças -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rfh7-m3e3chc29u3m17.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Jogo 6 Taças Diamond"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo 6 Taças Diamond</h3>
-                    <p class="text-gray-600 mb-4">R$43,59 - R$52,89</p>
-                    <a href="https://s.shopee.com.br/6AaeRmEHP0?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Kit Travessas -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lm97oc7x2uie9f.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Jogo Kit 03 Travessas Assadeira"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo Kit 03 Travessas Assadeira</h3>
-                    <p class="text-gray-600 mb-4">R$27,90 - R$99,90</p>
-                    <a href="https://s.shopee.com.br/1LVOitQaSD?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Escova Sanitária -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rffy-m349sp4us3vtb8.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Escova de Silicone para Vaso Sanitário"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Escova de Silicone para Vaso Sanitário</h3>
-                    <p class="text-gray-600 mb-4">R$19,00</p>
-                    <a href="https://s.shopee.com.br/7Kmbs3rJJQ?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Cobertor Manta Grosso -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m99hmf7shjia2d.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Cobertor Manta Grosso Casal"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Cobertor Manta Grosso Casal</h3>
-                    <p class="text-gray-600 mb-4">R$49,90 - R$129,90</p>
-                    <a href="https://s.shopee.com.br/3ftJVXzc90?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Kit Lixeira + Escova -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyo5vje4aoph63.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit Lixeira 3 litros Inox + Escova Sanitária"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Lixeira 3 litros Inox + Escova</h3>
-                    <p class="text-gray-600 mb-4">R$29,89 - R$82,50</p>
-                    <a href="https://s.shopee.com.br/7pisTQjJza?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
         </div>
-    </main>
+    </section>
 
-    <!-- Rodapé da página -->
-    <footer class="text-center text-gray-500 text-sm mt-10 p-4">
-        &copy; 2025 Karina & Alexandre. Desenvolvido com amor.
+    <!-- Secção Detalhes do Evento -->
+    <section id="event-details" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <h2 class="section-title">O Grande Dia</h2>
+            <p class="text-2xl font-bold mb-4 text-purple-800">25 de outubro de 2025, às 18h</p>
+            <p class="text-lg mb-2 text-gray-700"><strong>Local:</strong> 2ª Igreja Batista de Cidade Dutra</p>
+            <p class="text-lg mb-2 text-gray-700"><strong>Celebrante:</strong> Pastor Fernando Junior</p>
+            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divisão Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
+            <!-- Incorporação do Google Maps -->
+            <div class="relative w-full h-96 mt-8 rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" target="_blank" class="btn-primary inline-block mt-4">Abrir no Google Maps</a>
+        </div>
+    </section>
+
+    <!-- Secção RSVP - Agora com botão para o Formulário Google -->
+    <section id="rsvp" class="py-16 bg-gradient-to-b from-e0bbff to-f7f0ff">
+        <div class="container mx-auto px-4 text-center max-w-2xl">
+            <h2 class="section-title">Confirme Sua Presença</h2>
+            <p class="text-lg mb-8 text-gray-800">Mal podemos esperar para compartilhar este momento especial com você! Por favor, confirme sua presença através do formulário abaixo:</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Acessar Formulário de Confirmação</a>
+        </div>
+    </section>
+
+    <!-- Secção Lista de Presentes -->
+    <section id="gift-list" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <h2 class="section-title">Lista de Presentes</h2>
+            <p class="text-lg mb-8 text-gray-800">A sua presença já é o nosso maior presente! Mas se desejar nos presentear, aqui está a nossa lista:</p>
+            <a href="https://www.finalfeliz.de/karinasilva-e-alexandrecurvelo" target="_blank" class="btn-primary">
+                Ver Lista de Presentes
+            </a>
+            <div class="mt-4 flex justify-center">
+                <img src="magalu-logo.webp" alt="Logo Magalu" class="w-12 h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção Livro de Visitas - Agora com botão para o Formulário Google -->
+    <section id="guestbook" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-2xl">
+            <h2 class="section-title">Livro de Visitas ✨</h2>
+            <p class="text-lg mb-8 text-gray-800">Deixe uma mensagem especial para os noivos através do formulário abaixo:</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Acessar Formulário de Visitas</a>
+        </div>
+    </section>
+
+    <!-- Secção Hashtag -->
+    <section class="py-12 bg-white text-center">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-purple-800 mb-4">#AlexandreEKarina</h3>
+            <p class="text-lg text-gray-700">Compartilhe seus momentos connosco usando a nossa hashtag!</p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-purple-900 text-white py-8 text-center rounded-t-2xl footer-section">
+        <div class="flex flex-col items-center justify-center px-4">
+            <div class="audio-player-container">
+                <iframe src='https://www.4shared.com/web/embed/audio/file/c-ee-mLSjq?type=MINI&widgetWidth=530&playlistHeight=0&widgetRid=761340863995' style='overflow:hidden;height:60px;width:100%;border: 0;margin:0;'></iframe>
+            </div>
+            <p>&copy; 2025 Alexandre & Karina. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Criado com carinho para o nosso dia especial.</p>
+            <p class="visit-counter">Visitas: <span id="visitCounter">0</span></p>
+        </div>
     </footer>
 
+    <script>
+        // Lógica do Cronómetro
+        const weddingDate = new Date("October 25, 2025 18:00:00").getTime(); // Horário do casamento
+        const startDate = new Date().getTime(); // Data de início para o cálculo da barra de progresso
+        const totalDuration = weddingDate - startDate; // Duração total do período até o casamento (em ms)
+
+        const weddingProgressBarFill = document.getElementById('weddingProgressBarFill'); // Referência à barra de progresso
+        const brideImage = document.getElementById('brideImage'); // Referência à imagem dos noivos
+        const churchImage = document.getElementById('churchImage'); // Referência à imagem da igreja
+
+        const x = setInterval(function() {
+            const currentTime = new Date().getTime();
+            const distance = weddingDate - currentTime; // Tempo restante
+            const elapsed = currentTime - startDate; // Tempo decorrido
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            // Atualiza a barra de progresso do casamento e a posição da imagem dos noivos
+            if (totalDuration > 0) { // Evita divisão por zero se a data já passou
+                // Porcentagem do tempo RESTANTE para a barra (começa em 100%, vai para 0%)
+                let remainingPercentage = (distance / totalDuration) * 100;
+                remainingPercentage = Math.min(100, Math.max(0, remainingPercentage)); // Garante entre 0 e 100
+
+                // Porcentagem do tempo DECORRIDO para o movimento da imagem dos noivos (começa em 0%, vai para 100%)
+                let elapsedPercentage = (elapsed / totalDuration) * 100;
+                elapsedPercentage = Math.min(100, Math.max(0, elapsedPercentage)); // Garante entre 0 e 100
+
+                weddingProgressBarFill.style.width = `${remainingPercentage}%`; // Largura da barra diminui
+                // A imagem dos noivos se move da esquerda para a direita
+                brideImage.style.left = `${elapsedPercentage}%`;
+            } else {
+                weddingProgressBarFill.style.width = '0%'; // Barra completamente vazia
+                brideImage.style.left = '100%'; // Imagem dos noivos na igreja
+            }
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown-timer").innerHTML = "<p class='text-3xl font-bold text-purple-800'>O GRANDE DIA CHEGOU!</p>";
+                weddingProgressBarFill.style.width = '0%'; // Garante que a barra esteja vazia
+                brideImage.style.left = '100%'; // Garante que a imagem dos noivos esteja na igreja
+            }
+        }, 1000);
+
+        // Lógica do Contador de Visitas
+        window.onload = function() {
+            let visitCount = localStorage.getItem('weddingSiteVisitCount');
+            if (visitCount) {
+                visitCount = parseInt(visitCount) + 1;
+            } else {
+                visitCount = 1;
+            }
+            localStorage.setItem('weddingSiteVisitCount', visitCount);
+            document.getElementById('visitCounter').innerText = visitCount;
+
+            // Inicia o temporizador para ocultar o menu após o carregamento inicial
+            resetHideTimer();
+        };
+
+        // Lógica do Menu Ocultar/Mostrar
+        let lastScrollY = 0;
+        const mainNavbar = document.getElementById('mainNavbar');
+        const scrollThreshold = 50; // Quantidade de pixels para rolar antes de ocultar/mostrar
+        let hideMenuTimeout; // Variável para armazenar o ID do temporizador
+
+        function hideNavbar() {
+            mainNavbar.classList.add('navbar-hidden');
+        }
+
+        function showNavbar() {
+            mainNavbar.classList.remove('navbar-hidden');
+        }
+
+        function resetHideTimer() {
+            clearTimeout(hideMenuTimeout); // Limpa qualquer temporizador existente
+            showNavbar(); // Garante que o menu esteja visível
+            hideMenuTimeout = setTimeout(hideNavbar, 2000); // Oculta após 2 segundos
+        }
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Se rolar para baixo e passar do limite, oculta o menu
+            if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+                clearTimeout(hideMenuTimeout); // Limpa o temporizador de ocultação
+                hideNavbar(); // Oculta imediatamente ao rolar para baixo
+            }
+            // Se rolar para cima ou estiver no topo, mostra o menu e reinicia o temporizador
+            else if (currentScrollY < lastScrollY || currentScrollY <= scrollThreshold) {
+                resetHideTimer(); // Mostra o menu e reinicia o temporizador
+            }
+            lastScrollY = currentScrollY;
+        });
+
+        // Adiciona um listener para eventos de movimento do mouse (para desktop)
+        // Isso fará com que o menu reapareça se o mouse for movido, mesmo sem scroll
+        document.addEventListener('mousemove', () => {
+            resetHideTimer();
+        });
+
+        // Adiciona um listener para eventos de toque (para dispositivos móveis)
+        document.addEventListener('touchstart', () => {
+            resetHideTimer();
+        });
+    </script>
 </body>
 </html>
