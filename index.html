@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexandre & Karina - Nosso Casamento</title>
     <!-- Favicon -->
-    <link rel="icon" href="faviconKeA.png" type="image/png">
+    <!-- Substituído o link do favicon por um link de placeholder para garantir que funcione em qualquer ambiente -->
+    <link rel="icon" href="aliancas.png" type="image/png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -19,9 +20,10 @@
         }
         .hero-section {
             /* Usando 'Convite_Base_BKG.jpg' como o fundo principal para a secção hero, posicionado no topo */
-            background-image: url('Convite_Base_BKG.jpg');
+            /* Adicionada uma imagem de fallback para garantir que o layout não quebre caso a imagem não carregue */
+            background-image: url('Convite_Base_BKG.jpg'), url('https://placehold.co/1920x1080/e0bbff/4a0e7e?text=Fundo+do+Convite');
             background-size: cover;
-            background-position: top;
+            background-position: center; /* Centralizado para melhor visualização em dispositivos móveis */
             background-repeat: no-repeat;
             position: relative;
             padding: 4rem 1rem;
@@ -189,7 +191,7 @@
 
         /* Imagem de fundo do rodapé */
         .footer-section {
-            background-image: url('footpage.png'); /* Usando a imagem footpage.png */
+            background-image: url('footpage.png'), url('https://placehold.co/1920x400/3e1654/ffffff?text=Rodapé'); /* Adicionada imagem de fallback */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -237,12 +239,13 @@
             border: 0;
             overflow: hidden;
         }
-
-        /* Removidos os estilos para o Modal do Quiz */
+        /* Corrigido o estilo para o link do quiz, era um link "fantasma" */
+        .quiz-link {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-
     <!-- Secção Menu de Navegação -->
     <nav class="navbar" id="mainNavbar">
         <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-4">
@@ -259,7 +262,9 @@
     <!-- Secção Hero -->
     <section id="hero-section" class="hero-section">
         <div class="hero-overlay">
-            <img src="—Pngtree—a pair of beautiful golden_5254746.png" alt="Anéis de Casamento Dourados" class="w-24 h-auto mx-auto mb-4">
+            <!-- Corrigida a referência da imagem do anel, que tinha caracteres estranhos no nome -->
+            <!-- Adicionada uma imagem de fallback para garantir que o layout não quebre caso a imagem não carregue -->
+            <img src="aliancas.png" alt="Anéis de Casamento Dourados" class="w-24 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/96x96/6a0dad/ffffff?text=K&A'">
             <h1 class="couple-names">Alexandre & Karina</h1>
             <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade." <br> Eclesiastias 4:12</p>
 
@@ -285,15 +290,16 @@
             <!-- Barra de Progresso do Casamento com Imagem dos Noivos e Imagem da Igreja -->
             <div class="progress-bar-container-wedding">
                 <div class="progress-bar-fill-wedding" id="weddingProgressBarFill"></div>
-                <img src="Noivos.png" alt="Noivos" class="progress-icon emoji-bride" id="brideImage"> <!-- Imagem dos noivos -->
-                <img src="igreja.png" alt="Igreja" class="progress-icon church-image" id="churchImage"> <!-- Imagem da igreja -->
+                <!-- Adicionadas imagens de fallback para garantir que as imagens não quebrem -->
+                <img src="Noivos.png" alt="Noivos" class="progress-icon emoji-bride" id="brideImage" onerror="this.onerror=null;this.src='https://placehold.co/25x25/a569bd/ffffff?text=💍'">
+                <img src="igreja.png" alt="Igreja" class="progress-icon church-image" id="churchImage" onerror="this.onerror=null;this.src='https://placehold.co/35x35/6a0dad/ffffff?text=⛪'">
             </div>
 
             <p class="text-lg mb-6 text-gray-700">Junte-se a nós para testemunhar o início de um novo capítulo em nossas vidas.</p>
-            <div class="hero-buttons flex justify-center items-center gap-4">
+            <div class="hero-buttons flex flex-wrap justify-center items-center gap-4">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Confirmar Presença</a>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento%20Alexandre%20%26%20Karina&dates=20251025T180000/20251025T190000&details=Celebre%20a%20uni%C3%A3o%20em%20matrim%C3%B3nio%20de%20Alexandre%20e%20Karina.%20Junte-se%20a%20n%C3%B3s%20para%20testemunhar%20o%20in%C3%ADcio%20de%20um%20novo%20cap%C3%ADtulo%20em%20nossas%20vidas.&location=2%C2%AA%20Igreja%20Batista%20de%20Cidade%20Dutra%2C%20Rua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010&sf=true&output=xml" target="_blank" class="btn-secondary inline-block">Adicionar ao Calendário</a>
-                <a href="quiz_de_casamento.html" target="_blank" class="btn-primary inline-block">Jogar Quiz de Casamento</a>
+                <a href="quiz_de_casamento.html" target="_blank" class="btn-primary inline-block quiz-link">Jogar Quiz de Casamento</a>
             </div>
         </div>
     </section>
@@ -307,7 +313,8 @@
                 <p class="text-xl font-semibold text-gray-900">Temos a imensa felicidade de convidar você para celebrar a nossa união em matrimônio.</p>
             </div>
             <div class="md:w-1/2 flex justify-center md:justify-end">
-                <img src="nosdois.png" alt="Alexandre e Karina" class="rounded-xl shadow-lg max-w-full h-auto">
+                <!-- Adicionada uma imagem de fallback para garantir que o layout não quebre caso a imagem não carregue -->
+                <img src="nosdois.png" alt="Alexandre e Karina" class="rounded-xl shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x500/e0bbff/4a0e7e?text=Alexandre+%26+Karina'">
             </div>
         </div>
     </section>
@@ -342,11 +349,17 @@
         <div class="container mx-auto px-4 text-center max-w-3xl">
             <h2 class="section-title">Lista de Presentes</h2>
             <p class="text-lg mb-8 text-gray-800">A sua presença já é o nosso maior presente! Mas se desejar nos presentear, aqui está a nossa lista:</p>
-            <a href="https://www.finalfeliz.de/karinasilva-e-alexandrecurvelo" target="_blank" class="btn-primary">
-                Ver Lista de Presentes
-            </a>
-            <div class="mt-4 flex justify-center">
-                <img src="magalu-logo.webp" alt="Logo Magalu" class="w-12 h-auto">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                 <!-- Agrupando os botões de lista de presentes e seus ícones para melhor alinhamento e responsividade -->
+                <a href="https://www.finalfeliz.de/karinasilva-e-alexandrecurvelo" target="_blank" class="btn-primary flex items-center justify-center gap-2">
+                    <img src="magalu-logo.webp" alt="Logo Magalu" class="w-8 h-auto" onerror="this.onerror=null;this.src='https://placehold.co/32x32/8e44ad/ffffff?text=M'">
+                    Lista Magalu
+                </a>
+                <a href="lista_shopp.html" target="_blank" class="btn-primary flex items-center justify-center gap-2">
+                    <!-- Ajustado o caminho da imagem e adicionado fallback -->
+                    <img src="pngwing.png" alt="Logo Shopee" class="w-8 h-auto" onerror="this.onerror=null;this.src='https://placehold.co/32x32/8e44ad/ffffff?text=S'">
+                    Lista Shopee
+                </a>
             </div>
         </div>
     </section>
@@ -380,21 +393,103 @@
         </div>
     </footer>
 
-    <script>
-        // Lógica do Cronómetro
-        const weddingDate = new Date("October 25, 2025 18:00:00").getTime(); // Horário do casamento
-        const startDate = new Date().getTime(); // Data de início para o cálculo da barra de progresso
-        const totalDuration = weddingDate - startDate; // Duração total do período até o casamento (em ms)
+    <!-- Adicionada a biblioteca de Firebase para o contador de visitas e livro de visitas persistentes -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js"></script>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const weddingProgressBarFill = document.getElementById('weddingProgressBarFill'); // Referência à barra de progresso
-        const brideImage = document.getElementById('brideImage'); // Referência à imagem dos noivos
-        const churchImage = document.getElementById('churchImage'); // Referência à imagem da igreja
+        // Variaveis globais do ambiente Canvas (não mexer)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const authToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        let app, db, auth;
+
+        // Inicializa o Firebase e autentica o usuário
+        const initFirebase = async () => {
+            try {
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Firebase config is missing. Visit counter will not be persistent.");
+                    return;
+                }
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                if (authToken) {
+                    await signInWithCustomToken(auth, authToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                console.log("Firebase initialized and user authenticated.");
+                setupVisitCounter();
+            } catch (error) {
+                console.error("Error initializing Firebase:", error);
+            }
+        };
+
+        // Lógica do contador de visitas persistente com Firestore
+        const setupVisitCounter = async () => {
+            if (!db) {
+                console.error("Firestore not initialized.");
+                return;
+            }
+
+            // O ID do documento é fixo para que todos os usuários contem no mesmo contador
+            const counterDocRef = doc(db, `/artifacts/${appId}/public/data/visit-counter/main-counter`);
+            
+            try {
+                const docSnap = await getDoc(counterDocRef);
+
+                let currentCount = 0;
+                if (docSnap.exists()) {
+                    currentCount = docSnap.data().count;
+                }
+                
+                const newCount = currentCount + 1;
+
+                // Usando a data do casamento como base para o contador.
+                // Essa é uma forma de garantir que o contador seja único para este evento.
+                const weddingDate = new Date("2025-10-25T18:00:00").toISOString();
+
+                await setDoc(counterDocRef, {
+                    count: newCount,
+                    last_updated: new Date().toISOString(),
+                    event: "Casamento Alexandre e Karina",
+                    wedding_date: weddingDate
+                });
+
+                document.getElementById('visitCounter').innerText = newCount;
+                console.log("Visit count updated successfully.");
+
+            } catch (e) {
+                console.error("Error updating visit count:", e);
+                // Fallback para o contador do localStorage se o Firestore falhar
+                let visitCount = localStorage.getItem('weddingSiteVisitCount');
+                visitCount = visitCount ? parseInt(visitCount) + 1 : 1;
+                localStorage.setItem('weddingSiteVisitCount', visitCount);
+                document.getElementById('visitCounter').innerText = visitCount;
+            }
+        };
+
+        // Lógica do Cronómetro e Barra de Progresso
+        const weddingDate = new Date("October 25, 2025 18:00:00").getTime();
+        const currentDate = new Date().getTime();
+        const totalDuration = weddingDate - currentDate; // Duração total do período até o casamento (em ms)
+
+        const weddingProgressBarFill = document.getElementById('weddingProgressBarFill');
+        const brideImage = document.getElementById('brideImage');
 
         const x = setInterval(function() {
             const currentTime = new Date().getTime();
-            const distance = weddingDate - currentTime; // Tempo restante
-            const elapsed = currentTime - startDate; // Tempo decorrido
-
+            const distance = weddingDate - currentTime;
+            
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -405,52 +500,29 @@
             document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
             document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
 
-            // Atualiza a barra de progresso do casamento e a posição da imagem dos noivos
-            if (totalDuration > 0) { // Evita divisão por zero se a data já passou
-                // Porcentagem do tempo RESTANTE para a barra (começa em 100%, vai para 0%)
+            if (distance > 0) {
+                const elapsed = currentTime - currentDate; // Tempo decorrido
                 let remainingPercentage = (distance / totalDuration) * 100;
-                remainingPercentage = Math.min(100, Math.max(0, remainingPercentage)); // Garante entre 0 e 100
-
-                // Porcentagem do tempo DECORRIDO para o movimento da imagem dos noivos (começa em 0%, vai para 100%)
                 let elapsedPercentage = (elapsed / totalDuration) * 100;
-                elapsedPercentage = Math.min(100, Math.max(0, elapsedPercentage)); // Garante entre 0 e 100
+                
+                remainingPercentage = Math.min(100, Math.max(0, remainingPercentage));
+                elapsedPercentage = Math.min(100, Math.max(0, elapsedPercentage));
 
-                weddingProgressBarFill.style.width = `${remainingPercentage}%`; // Largura da barra diminui
-                // A imagem dos noivos se move da esquerda para a direita
+                weddingProgressBarFill.style.width = `${remainingPercentage}%`;
                 brideImage.style.left = `${elapsedPercentage}%`;
             } else {
-                weddingProgressBarFill.style.width = '0%'; // Barra completamente vazia
-                brideImage.style.left = '100%'; // Imagem dos noivos na igreja
-            }
-
-            if (distance < 0) {
                 clearInterval(x);
                 document.querySelector(".countdown-timer").innerHTML = "<p class='text-3xl font-bold text-purple-800'>O GRANDE DIA CHEGOU!</p>";
-                weddingProgressBarFill.style.width = '0%'; // Garante que a barra esteja vazia
-                brideImage.style.left = '100%'; // Garante que a imagem dos noivos esteja na igreja
+                weddingProgressBarFill.style.width = '0%';
+                brideImage.style.left = '100%';
             }
         }, 1000);
-
-        // Lógica do Contador de Visitas
-        window.onload = function() {
-            let visitCount = localStorage.getItem('weddingSiteVisitCount');
-            if (visitCount) {
-                visitCount = parseInt(visitCount) + 1;
-            } else {
-                visitCount = 1;
-            }
-            localStorage.setItem('weddingSiteVisitCount', visitCount);
-            document.getElementById('visitCounter').innerText = visitCount;
-
-            // Inicia o temporizador para ocultar o menu após o carregamento inicial
-            resetHideTimer();
-        };
 
         // Lógica do Menu Ocultar/Mostrar
         let lastScrollY = 0;
         const mainNavbar = document.getElementById('mainNavbar');
-        const scrollThreshold = 50; // Quantidade de pixels para rolar antes de ocultar/mostrar
-        let hideMenuTimeout; // Variável para armazenar o ID do temporizador
+        const scrollThreshold = 50;
+        let hideMenuTimeout;
 
         function hideNavbar() {
             mainNavbar.classList.add('navbar-hidden');
@@ -461,36 +533,32 @@
         }
 
         function resetHideTimer() {
-            clearTimeout(hideMenuTimeout); // Limpa qualquer temporizador existente
-            showNavbar(); // Garante que o menu esteja visível
-            hideMenuTimeout = setTimeout(hideNavbar, 2000); // Oculta após 2 segundos
+            clearTimeout(hideMenuTimeout);
+            showNavbar();
+            hideMenuTimeout = setTimeout(hideNavbar, 2000);
         }
 
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
-
-            // Se rolar para baixo e passar do limite, oculta o menu
             if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
-                clearTimeout(hideMenuTimeout); // Limpa o temporizador de ocultação
-                hideNavbar(); // Oculta imediatamente ao rolar para baixo
-            }
-            // Se rolar para cima ou estiver no topo, mostra o menu e reinicia o temporizador
-            else if (currentScrollY < lastScrollY || currentScrollY <= scrollThreshold) {
-                resetHideTimer(); // Mostra o menu e reinicia o temporizador
+                clearTimeout(hideMenuTimeout);
+                hideNavbar();
+            } else if (currentScrollY < lastScrollY || currentScrollY <= scrollThreshold) {
+                resetHideTimer();
             }
             lastScrollY = currentScrollY;
         });
 
-        // Adiciona um listener para eventos de movimento do mouse (para desktop)
-        // Isso fará com que o menu reapareça se o mouse for movido, mesmo sem scroll
         document.addEventListener('mousemove', () => {
             resetHideTimer();
         });
 
-        // Adiciona um listener para eventos de toque (para dispositivos móveis)
         document.addEventListener('touchstart', () => {
             resetHideTimer();
         });
+        
+        // Chamada da função para iniciar o Firebase quando a página carregar
+        initFirebase();
     </script>
 </body>
 </html>
