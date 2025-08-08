@@ -4,43 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Presentes - Karina & Alexandre</title>
-    <!-- Inclui a biblioteca Tailwind CSS para estilização rápida e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Define a fonte Inter como padrão para a página */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Fundo do corpo agora é cinza claro */
+            background-color: #f3f4f6;
         }
-        /* Estilo para a animação do botão ao passar o mouse */
         .btn-hover-effect:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        /* Classe específica para o fundo do cabeçalho */
         .bg-bosque-header {
-            /* Adiciona a imagem de fundo do bosque como um arquivo local */
             background-image: url('Convite_Base_BKG.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
         }
-        /* Adiciona um estilo de posicionamento para o cabeçalho para que a animação funcione */
         header {
             position: relative;
             overflow: hidden;
         }
-        /* Classe para as borboletas agora usa uma imagem */
         .butterfly {
             position: absolute;
-            width: 40px; /* Aumenta um pouco o tamanho da imagem da borboleta */
+            width: 40px;
             height: 40px;
             opacity: 0.9;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* Adiciona uma sombra para destacar a borboleta */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
             animation: fly linear infinite;
         }
-        /* Animação de voo para as borboletas */
         @keyframes fly {
             0% {
                 transform: translateX(0) translateY(0) rotate(0deg);
@@ -64,7 +56,6 @@
                 opacity: 0;
             }
         }
-        /* Variações da animação para as borboletas */
         .butterfly-1 {
             animation-duration: 20s;
             animation-delay: 0s;
@@ -94,11 +85,8 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Cabeçalho da página -->
     <header class="bg-white shadow-lg rounded-b-3xl p-6 md:p-10 mb-8 max-w-7xl mx-auto bg-bosque-header">
-        <!-- Contêiner para as borboletas animadas -->
         <div class="absolute inset-0 z-0">
-            <!-- As borboletas agora são imagens -->
             <img src="pngegg.png" alt="Borboleta 1" class="butterfly butterfly-1">
             <img src="pngegg.png" alt="Borboleta 2" class="butterfly butterfly-2">
             <img src="pngegg.png" alt="Borboleta 3" class="butterfly butterfly-3">
@@ -112,298 +100,465 @@
             <h2 class="text-xl md:text-2xl font-light text-gray-700">
                 Nossa Lista de Presentes de Casamento
             </h2>
-            <!-- Logo da Shopee -->
             <img src="https://i.pinimg.com/1200x/d7/72/84/d77284d5eef098bfd48af911bd71a038.jpg"
-                 onerror="this.src='https://placehold.co/100x40/e2e8f0/0f172a?text=Shopee'"
-                 alt="Logo da Shopee"
-                 class="h-10 mx-auto my-4">
+                onerror="this.src='https://placehold.co/100x40/e2e8f0/0f172a?text=Shopee'"
+                alt="Logo da Shopee"
+                class="h-10 mx-auto my-4">
             <p class="mt-4 max-w-2xl mx-auto text-gray-600">
                 Seu carinho e presença já são o nosso maior presente! Se você quiser nos ajudar a montar a nossa casa, preparamos uma lista de itens que adoraríamos ter.
             </p>
         </div>
     </header>
 
-    <!-- Seção principal com os cartões dos produtos -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <!-- Grid responsivo para os cartões de produtos -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Cartão do Produto: Kit Potes de Vidro -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3xthku507y00f.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit de potes de vidro"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit de potes de vidro"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Conjunto De Potes 10 Peças Vidro</h3>
                     <p class="text-gray-600 mb-4">R$27,80 - R$49,80</p>
                     <a href="https://s.shopee.com.br/6fWuzH6RYj?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Capa para Colchão -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uudff.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Capa para colchão impermeável"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Capa para colchão impermeável"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Capa Para Colchão Impermeável</h3>
                     <p class="text-gray-600 mb-4">R$23,90 - R$54,90</p>
                     <a href="https://s.shopee.com.br/7KmbmYb4Bh?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Panos de Microfibra -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3rseadtr5fc80.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit 10 Panos De Limpeza Microfibra"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit 10 Panos De Limpeza Microfibra"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit 10 Panos De Limpeza Microfibra</h3>
                     <p class="text-gray-600 mb-4">R$18,88</p>
                     <a href="https://s.shopee.com.br/4q5GoIpIfO?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Varal de Chão -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m6se7iwi7hpja5.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Varal de chão dobrável"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Varal de chão dobrável"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Varal De Chão 3 Andares Dobrável</h3>
                     <p class="text-gray-600 mb-4">R$84,89 - R$89,89</p>
                     <a href="https://s.shopee.com.br/8ALinvaF06?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Forro Air Fryer -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lw67pc8qet9xde.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit 6 peças de silicone para Air Fryer"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit 6 peças de silicone para Air Fryer"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">6 Peças/Conjunto Forro Air Fryer</h3>
                     <p class="text-gray-600 mb-4">R$19,99</p>
                     <a href="https://s.shopee.com.br/5pxo1lTWAo?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Air Fryer Oven -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mad0e5vyi7llb2.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Fritadeira Elétrica Air Fryer Oven Mondial"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Fritadeira Elétrica Air Fryer Oven Mondial"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Fritadeira Elétrica Air Fryer Oven</h3>
                     <p class="text-gray-600 mb-4">R$598,90</p>
                     <a href="https://s.shopee.com.br/10157IuJZ?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Mixer Elétrico -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/sg-11134201-7ra15-m50cpye62n9qb3.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Batedor Misturador Mixer Elétrico"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Batedor Misturador Mixer Elétrico"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Batedor Misturador Mixer Elétrico</h3>
                     <p class="text-gray-600 mb-4">R$23,99 - R$26,69</p>
                     <a href="https://s.shopee.com.br/4flqdu95c9?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Frigideira Antiaderente -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ly43ux2obcpja4.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Frigideira Antiaderente 3 em 1"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Frigideira Antiaderente 3 em 1"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Frigideira Antiaderente 3 em 1</h3>
                     <p class="text-gray-600 mb-4">R$38,99 - R$39,99</p>
                     <a href="https://s.shopee.com.br/5feNpmM4cX?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
-
-            <!-- Cartão do Produto: Cobertor Manta Casal -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ma2tl6b8r4si05.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Cobertor Manta Casal Macio"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Cobertor Manta Casal Macio</h3>
-                    <p class="text-gray-600 mb-4">R$44,90</p>
-                    <a href="https://s.shopee.com.br/2LNvriOLe0?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Coberdrom Casal Queen -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyxmxoo3fh35c2.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Coberdrom Casal Queen"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Coberdrom Casal Queen Dupla Face</h3>
-                    <p class="text-gray-600 mb-4">R$109,90 - R$139,90</p>
-                    <a href="https://s.shopee.com.br/7V621Z8zWm?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Jogo de Lençol -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
-                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9kc2ptvmb5uff.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Jogo de Lençol 03 Peças"
-                     class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo de Lençol 03 Peças 400 Fios</h3>
-                    <p class="text-gray-600 mb-4">R$19,90 - R$45,99</p>
-                    <a href="https://s.shopee.com.br/9pTwoMZ9r0?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
-                        Ver na Shopee
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cartão do Produto: Jogo de Taças -->
+            
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rfh7-m3e3chc29u3m17.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Jogo 6 Taças Diamond"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Jogo 6 Taças Diamond"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo 6 Taças Diamond</h3>
                     <p class="text-gray-600 mb-4">R$43,59 - R$52,89</p>
                     <a href="https://s.shopee.com.br/6AaeRmEHP0?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Kit Travessas -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lm97oc7x2uie9f.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Jogo Kit 03 Travessas Assadeira"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Jogo Kit 03 Travessas Assadeira"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo Kit 03 Travessas Assadeira</h3>
                     <p class="text-gray-600 mb-4">R$27,90 - R$99,90</p>
                     <a href="https://s.shopee.com.br/1LVOitQaSD?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Escova Sanitária -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m5ikqwgz362t74.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Jogo De Pratos Fundos Aparelho De Jantar Em Vidro 12 Peças"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo De Pratos Fundos Em Vidro 12 Peças</h3>
+                    <p class="text-gray-600 mb-4">R$52,90</p>
+                    <a href="https://s.shopee.com.br/3Ax35o3zMN?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9r15fz231a18d.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Liquidificador Mini Sem Fio Portátil"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Liquidificador Mini Portátil Recarregável</h3>
+                    <p class="text-gray-600 mb-4">R$26,59</p>
+                    <a href="https://s.shopee.com.br/30dcv35RSd?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mct7logv0qv5b7.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Picador Triturador De Alimentos Elétrico"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Picador Triturador De Alimentos Elétrico</h3>
+                    <p class="text-gray-600 mb-4">R$71,99 - R$89,99</p>
+                    <a href="https://s.shopee.com.br/BJRfcN5Ta?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mb57xk8tcvbjce.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Panela de Pressão Elétrica Elgin PPR 4L 840w Aço Inox"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Panela de Pressão Elétrica Elgin PPR 4L</h3>
+                    <p class="text-gray-600 mb-4">R$267,99</p>
+                    <a href="https://s.shopee.com.br/802J1fVG6Q?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lo8udaowkl2hfe.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Profissional Multiuso Cozinha Slicer Aço Inox 14 em 1"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Multiuso Cozinha Slicer Aço Inox 14 em 1</h3>
+                    <p class="text-gray-600 mb-4">R$49,88</p>
+                    <a href="https://s.shopee.com.br/60HEe8M2RZ?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/84cc4690d03616f8ad6f9144b5e28557.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit de Organizador Multiuso Plasutil Geladeira Dispensa Cozinha Guarda e Conserva"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit de Organizador Multiuso Plasutil</h3>
+                    <p class="text-gray-600 mb-4">R$24,90 - R$69,90</p>
+                    <a href="https://s.shopee.com.br/8UyZclKVpr?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/sg-11134201-23010-vinj66uly8lv04.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit de Pincéis de Maquiagem"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit 13 Pcs Pincéis De Maquiagem Profissionais</h3>
+                    <p class="text-gray-600 mb-4">R$7,50 - R$22,00</p>
+                    <a href="https://s.shopee.com.br/7V62QgLZwp?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oxl1vauan139.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit com 3 Quadros Decorativos"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit com 3 Quadros Decorativos + Frase</h3>
+                    <p class="text-gray-600 mb-4">R$12,90</p>
+                    <a href="https://s.shopee.com.br/5L1Xqq8ap5?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rffy-m349sp4us3vtb8.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Escova de Silicone para Vaso Sanitário"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Escova de Silicone para Vaso Sanitário"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Escova de Silicone para Vaso Sanitário</h3>
                     <p class="text-gray-600 mb-4">R$19,00</p>
                     <a href="https://s.shopee.com.br/7Kmbs3rJJQ?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Cobertor Manta Grosso -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m99hmf7shjia2d.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Cobertor Manta Grosso Casal"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Cobertor Manta Grosso Casal"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Cobertor Manta Grosso Casal</h3>
                     <p class="text-gray-600 mb-4">R$49,90 - R$129,90</p>
                     <a href="https://s.shopee.com.br/3ftJVXzc90?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
-            <!-- Cartão do Produto: Kit Lixeira + Escova -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
                 <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyo5vje4aoph63.webp"
-                     onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
-                     alt="Kit Lixeira 3 litros Inox + Escova Sanitária"
-                     class="w-full h-48 object-cover">
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit Lixeira 3 litros Inox + Escova Sanitária"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Lixeira 3 litros Inox + Escova</h3>
                     <p class="text-gray-600 mb-4">R$29,89 - R$82,50</p>
                     <a href="https://s.shopee.com.br/7pisTQjJza?share_channel_code=1"
-                       target="_blank"
-                       class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
                         Ver na Shopee
                     </a>
                 </div>
             </div>
 
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m8hpl5yislwxf7.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="kit Tapete para Banheiro de Secagem Rápida"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Tapete para Banheiro Secagem Rápida</h3>
+                    <p class="text-gray-600 mb-4">R$19,88 - R$28,89</p>
+                    <a href="https://s.shopee.com.br/7V62GxxCIr?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/sg-11134201-7renn-m8e1cxyvvvkhfe.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Escova Elétrica de Limpeza Sem Fio"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Escova Elétrica de Limpeza Sem Fio</h3>
+                    <p class="text-gray-600 mb-4">R$24,99 - R$31,99</p>
+                    <a href="https://s.shopee.com.br/1Vop7qqR6o?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9kc2ptvmb5uff.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Jogo de Lençol 03 Peças"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Jogo de Lençol 03 Peças 400 Fios</h3>
+                    <p class="text-gray-600 mb-4">R$19,90 - R$45,99</p>
+                    <a href="https://s.shopee.com.br/9pTwoMZ9r0?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rbn2-lmxhsa24dgyr30.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit Lencol Casal Queen Extra Macio 400 Fios"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Lençol Casal Queen 400 Fios</h3>
+                    <p class="text-gray-600 mb-4">R$18,90 - R$44,80</p>
+                    <a href="https://s.shopee.com.br/6pqLTp1I4j?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m97d06kl0vlud5.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Cobertor Coberdom Sherpa La de Carneiro"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Cobertor Coberdom Sherpa Lã de Carneiro</h3>
+                    <p class="text-gray-600 mb-4">R$99,90 - R$169,90</p>
+                    <a href="https://s.shopee.com.br/5feO6tb225?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all hover:scale-105 duration-300">
+                <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m8dn1pj3bgmpb9.webp"
+                    onerror="this.src='https://placehold.co/400x300/e2e8f0/0f172a?text=Sem+imagem'"
+                    alt="Kit Colcha Cobre Leito Queen 400 Fios"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Colcha Cobre Leito Queen 3 Peças</h3>
+                    <p class="text-gray-600 mb-4">R$67,90</p>
+                    <a href="https://s.shopee.com.br/1BBylJxcIR?share_channel_code=1"
+                        target="_blank"
+                        class="inline-block w-full text-center bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg btn-hover-effect">
+                        Ver na Shopee
+                    </a>
+                </div>
+            </div>
+            
         </div>
+
+        <div class="mt-12 bg-white rounded-xl shadow-md p-6 max-w-2xl mx-auto text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Endereço para Entrega</h3>
+            <p class="text-gray-700 text-lg">
+                Av dos Jacarandás, 800<br>
+                Casa 2<br>
+                Granjinha - Embu-Guaçu/SP<br>
+                CEP: 06931-020
+            </p>
+        </div>
+
     </main>
 
-    <!-- Rodapé da página -->
     <footer class="text-center text-gray-500 text-sm mt-10 p-4">
         &copy; 2025 Karina & Alexandre. Desenvolvido com amor.
     </footer>
