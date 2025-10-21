@@ -3,561 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandre & Karina - Nosso Casamento</title>
-    <!-- Favicon -->
+    <title>Alexandre &amp; Karina – Nosso Casamento</title>
     <link rel="icon" href="aliancas.png" type="image/png">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
     <style>
-        /* Estilos personalizados para combinar com a estética do convite */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f0ff; /* Fundo roxo claro */
-            color: #4a0e7e; /* Texto roxo escuro */
-            scroll-behavior: smooth; /* Rolagem suave para os links do menu */
-        }
-        .hero-section {
-            /* Usando 'Convite_Base_BKG.jpg' como o fundo principal para a secção hero, posicionado no topo */
-            /* Adicionada uma imagem de fallback para garantir que o layout não quebre caso a imagem não carregue */
-            background-image: url('Convite_Base_BKG.jpg'), url('https://placehold.co/1920x1080/e0bbff/4a0e7e?text=Fundo+do+Convite');
-            background-size: cover;
-            background-position: center; /* Centralizado para melhor visualização em dispositivos móveis */
-            background-repeat: no-repeat;
-            position: relative;
-            padding: 4rem 1rem;
-            min-height: 100vh; /* Altura total da viewport */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .hero-overlay {
-            background-color: rgba(255, 255, 255, 0.7); /* Sobreposição branca semi-transparente */
-            border-radius: 1.5rem; /* Cantos arredondados */
-            padding: 2rem;
-            max-width: 90%;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px); /* Efeito de desfoque suave */
-        }
-        .couple-names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem; /* Fonte maior para os nomes */
-            color: #6a0dad; /* Roxo real */
-            margin-bottom: 1rem;
-            line-height: 1;
-        }
-        .quote {
-            font-style: italic;
-            font-size: 1.25rem;
-            color: #5a118e;
-            margin-bottom: 2rem;
-        }
-        .section-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            color: #6a0dad;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .btn-primary {
-            background-color: #8e44ad; /* Roxo médio */
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary:hover {
-            background-color: #9b59b6; /* Roxo mais claro ao passar o mouse */
-        }
-        .btn-secondary { /* Estilo para o novo botão do calendário */
-            background-color: #a0a0a0; /* Cor acinzentada */
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .btn-secondary:hover {
-            background-color: #b0b0b0; /* Cinza mais claro ao passar o mouse */
-        }
-        .countdown-timer span {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #6a0dad;
-            display: block;
-            line-height: 1;
-        }
-        .countdown-timer div {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: #5a118e;
-        }
-
-        /* Estilos da barra de progresso */
-        .progress-bar-container-wedding {
-            width: 80%;
-            height: 6px; /* Mais estreito */
-            background-color: #CCCCFF; /* Fundo lilás claro */
-            border-radius: 10px;
-            margin-top: 1rem;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative; /* Essencial para posicionar os elementos */
-            margin-left: auto; /* Centraliza a barra */
-            margin-right: auto; /* Centraliza a barra */
-        }
-        .progress-bar-fill-wedding {
-            height: 100%;
-            width: 100%; /* Começa em 100% para esvaziar */
-            background-color: #A569BD; /* Lilás mais claro para o preenchimento */
-            border-radius: 10px;
-            transition: width 0.5s ease-in-out;
-        }
-        .progress-icon { /* Classe genérica para os ícones na barra */
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%); /* Centraliza o elemento verticalmente */
-            z-index: 10; /* Garante que os elementos fiquem acima da barra */
-            pointer-events: none; /* Não interfere com cliques */
-        }
-        .emoji-bride { /* Imagem dos noivos */
-            width: 25px; /* Tamanho ajustado para menor */
-            height: auto;
-            left: -12.5px; /* Posição inicial na extremidade (metade da largura para fora) */
-            transition: left 0.5s ease-in-out; /* Transição suave para o movimento */
-        }
-        .church-image { /* Imagem da igreja */
-            width: 35px; /* Tamanho ajustado */
-            height: auto;
-            right: -17.5px; /* Posição na extremidade (metade da largura para fora) */
-        }
-
-
-        /* Ajustes responsivos */
-        @media (max-width: 768px) {
-            .couple-names {
-                font-size: 3.5rem;
-            }
-            .quote {
-                font-size: 1rem;
-            }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .countdown-timer span {
-                font-size: 1.8rem;
-            }
-            .hero-buttons {
-                flex-direction: column; /* Empilha os botões verticalmente em telas pequenas */
-                gap: 1rem; /* Espaço entre os botões empilhados */
-            }
-            /* Ajuste para o menu em telas pequenas */
-            .navbar .container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .progress-bar-container-wedding {
-                width: 90%; /* Ajusta a largura em telas menores */
-            }
-        }
-        @media (max-width: 480px) {
-            .couple-names {
-                font-size: 2.5rem;
-            }
-            .quote {
-                font-size: 0.9rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .countdown-timer span {
-                font-size: 1.5rem;
-            }
-            .hero-overlay {
-                padding: 1.5rem;
-            }
-            .emoji-bride {
-                width: 20px; /* Ajuste para telas muito pequenas */
-                left: -10px; /* Ajuste de posicionamento */
-            }
-            .church-image {
-                width: 25px; /* Ajuste para telas muito pequenas */
-                right: -12.5px; /* Ajuste de posicionamento */
-            }
-        }
-
-        /* Imagem de fundo do rodapé */
-        .footer-section {
-            background-image: url('footpage.png'), url('https://placehold.co/1920x400/3e1654/ffffff?text=Rodapé'); /* Adicionada imagem de fallback */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        /* Estilo para o contador de visitas */
-        .visit-counter {
-            font-size: 0.75rem; /* Tamanho da fonte pequeno */
-            color: rgba(255, 255, 255, 0.7); /* Cor mais clara para ser discreto */
-            margin-top: 0.5rem;
-        }
-
-        /* Estilos para o menu de navegação */
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para o menu */
-            backdrop-filter: blur(8px); /* Efeito de desfoque para o fundo */
-            color: #4a0e7e; /* Cor do texto do menu */
-            padding: 1rem 0;
-            position: fixed; /* Menu fixo no topo */
-            width: 100%;
-            top: 0;
-            z-index: 1000; /* Garante que o menu fique acima de outros elementos */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out; /* Transição para o efeito de ocultar/mostrar */
-        }
-        .navbar-hidden {
-            transform: translateY(-100%); /* Move o menu para cima para ocultá-lo */
-        }
-        .navbar-link {
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .navbar-link:hover {
-            background-color: rgba(142, 68, 173, 0.2); /* Roxo mais claro e transparente ao passar o mouse */
-        }
-        /* Estilo para o iframe do áudio */
-        .audio-player-container {
-            width: 100%; /* Ocupa a largura total */
-            max-width: 530px; /* Limita a largura máxima para desktop */
-            margin: 1rem auto 0.5rem auto; /* Centraliza e adiciona margens */
-        }
-        .audio-player-container iframe {
-            width: 100%;
-            height: 60px;
-            border: 0;
-            overflow: hidden;
-        }
-        /* Corrigido o estilo para o link do quiz, era um link "fantasma" */
-        .quiz-link {
-            display: inline-block;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f0ff; color: #4a0e7e; scroll-behavior: smooth;}
+        .navbar {background-color: rgba(255,255,255,0.8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: #4a0e7e; padding: 1rem 0; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        .navbar-link {padding: 0.5rem 1rem; border-radius: 0.5rem; transition: background-color 0.3s ease; text-decoration: none; color: inherit;}
+        .navbar-link:hover { background-color: rgba(142,68,173,0.2);}
+        .hero-section {background-image: url('Convite_Base_BKG.jpg'), url('https://placehold.co/1920x1080/e0bbff/4a0e7e?text=Fundo+do+Convite'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 4rem 1rem; min-height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; transition: min-height 0.5s;}
+        .hero-overlay {background-color: rgba(255,255,255,0.7); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); border-radius: 1.5rem; padding: 2rem; max-width: 90%; box-shadow: 0 10px 20px rgba(0,0,0,0.1);}
+        .couple-names { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #6a0dad; margin-bottom: 1rem; line-height: 1;}
+        .quote { font-style: italic; font-size: 1.25rem; color: #5a118e; margin-bottom: 2rem;}
+        .btn-primary, .btn-secondary {display: inline-block; padding: 0.75rem 2rem; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-decoration: none; font-weight: 500; text-align: center; transition: background-color 0.3s ease;}
+        .btn-primary {background-color: #8e44ad; color: #fff;}
+        .btn-primary:hover {background-color: #9b59b6;}
+        .btn-secondary {background-color: #a0a0a0; color: #fff;}
+        .btn-secondary:hover {background-color: #b0b0b0;}
+        .countdown-timer span { font-size: 2.5rem; font-weight: 700; color: #6a0dad; display: block; line-height: 1;}
+        .countdown-timer div {font-size: 0.9rem; text-transform: uppercase; color: #5a118e;}
+        .progress-bar-container-wedding {width: 80%; height: 6px; background-color: #CCCCFF; border-radius: 10px; margin: 1rem auto; position: relative; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);}
+        .progress-bar-fill-wedding {height: 100%; width: 100%; background-color: #A569BD; border-radius: 10px; transition: width 0.5s ease-in-out;}
+        .progress-icon { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; pointer-events: none;}
+        .emoji-bride { width: 25px; height: auto; transition: left 0.5s ease-in-out;}
+        .church-image { width: 35px; height: auto; right: -17.5px;}
+        .section-title {font-family: 'Great Vibes', cursive; font-size: 3rem; color: #6a0dad; margin-bottom: 2rem; text-align: center;}
+        .audio-player-container .audio-iframe {display: block; width: 100%; max-width: 530px; height: 60px; border: 0; margin: 1rem auto 0.5rem auto;}
+        .map-iframe {border: 0; width: 100%; height: 100%;}
+        .footer-section {background-image: url('footpage.png'), url('https://placehold.co/1920x400/3e1654/ffffff?text=Rodapé'); background-size: cover; background-position: center; background-repeat: no-repeat; color: #fff; text-align: center; padding: 2rem 1rem;}
+        .visit-counter { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem;}
+        #youtubeVideo { width:100%;}
+        #youtubeVideo iframe { width:100%; max-width:560px; height:315px; margin:0 auto; display:block; border-radius:12px;}
+        #butterfly {width:100%;margin-top:2rem;}
+        #butterfly img {width:100%;height:auto;display:block;}
+        @media (max-width:768px) {.couple-names { font-size:3.5rem;} .quote { font-size:1rem;} .section-title { font-size:2.5rem;} .countdown-timer span { font-size:1.8rem;} .hero-buttons { display:flex; flex-direction:column; gap:1rem;} .progress-bar-container-wedding { width:90%;}}
+        @media (max-width:620px) { #youtubeVideo iframe {max-width:100%;height:220px;}}
+        @media (max-width:480px) {.couple-names { font-size:2.5rem;} .quote { font-size:0.9rem;} .section-title { font-size:2rem;} .countdown-timer span { font-size:1.5rem;} .hero-overlay { padding:1.5rem;} .emoji-bride { width:20px;} .church-image { width:25px;}}
     </style>
 </head>
 <body>
-    <!-- Secção Menu de Navegação -->
-    <nav class="navbar" id="mainNavbar">
-        <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-4">
-            <a href="#hero-section" class="navbar-link">Início</a>
-            <a href="#invitation-details" class="navbar-link">Convite</a>
-            <a href="#event-details" class="navbar-link">O Grande Dia</a>
-            <a href="#rsvp" class="navbar-link">Confirmar Presença</a>
-            <a href="#gift-list" class="navbar-link">Lista de Presentes</a>
-            <a href="#guestbook" class="navbar-link">Livro de Visitas</a>
-            <a href="quiz_de_casamento.html" target="_blank" class="navbar-link">Jogar Quiz</a>
+<nav class="navbar" id="mainNavbar">
+    <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-4">
+        <a href="#hero-section" class="navbar-link">Início</a>
+        <a href="#invitation-details" class="navbar-link">Convite</a>
+        <a href="#event-details" class="navbar-link">O Grande Dia</a>
+        <a href="#rsvp" class="navbar-link">Confirmar Presença</a>
+        <a href="#gift-list" class="navbar-link">Lista de Presentes</a>
+        <a href="#guestbook" class="navbar-link">Livro de Visitas</a>
+        <a href="quiz_de_casamento.html" target="_blank" rel="noopener noreferrer" class="navbar-link">Jogar Quiz</a>
+    </div>
+</nav>
+<section id="hero-section" class="hero-section">
+    <div class="hero-overlay">
+        <img src="aliancas.png" alt="Anéis de Casamento Dourados"
+             onerror="this.onerror=null;this.src='https://placehold.co/96x96/6a0dad/ffffff?text=K&A'"
+             class="w-24 h-auto mx-auto mb-4">
+        <h1 class="couple-names">Alexandre &amp; Karina</h1>
+        <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade."<br>Eclesiastes 4:12</p>
+        <div id="countdownDisplay" class="countdown-timer flex justify-center items-center space-x-4 mb-8" aria-live="polite">
+            <div class="text-center"><span id="days">00</span><div>Dias</div></div>
+            <div class="text-center"><span id="hours">00</span><div>Horas</div></div>
+            <div class="text-center"><span id="minutes">00</span><div>Minutos</div></div>
+            <div class="text-center"><span id="seconds">00</span><div>Segundos</div></div>
         </div>
-    </nav>
-
-    <!-- Secção Hero -->
-    <section id="hero-section" class="hero-section">
-        <div class="hero-overlay">
-            <!-- Corrigida a referência da imagem do anel, que tinha caracteres estranhos no nome -->
-            <!-- Adicionada uma imagem de fallback para garantir que o layout não quebre caso a imagem não carregue -->
-            <img src="aliancas.png" alt="Anéis de Casamento Dourados" class="w-24 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/96x96/6a0dad/ffffff?text=K&A'">
-            <h1 class="couple-names">Alexandre & Karina</h1>
-            <p class="quote">"Um por um é facilmente vencido, mas dois podem resistir. O cordão de três dobras não se rompe com facilidade." <br> Eclesiastias 4:12</p>
-
-            <div class="countdown-timer flex justify-center items-center space-x-4 mb-8">
-                <div class="text-center">
-                    <span id="days">00</span>
-                    <div>Dias</div>
-                </div>
-                <div class="text-center">
-                    <span id="hours">00</span>
-                    <div>Horas</div>
-                </div>
-                <div class="text-center">
-                    <span id="minutes">00</span>
-                    <div>Minutos</div>
-                </div>
-                <div class="text-center">
-                    <span id="seconds">00</span>
-                    <div>Segundos</div>
-                </div>
-            </div>
-
-            <!-- Barra de Progresso do Casamento com Imagem dos Noivos e Imagem da Igreja -->
-            <div class="progress-bar-container-wedding">
+        <div id="progress-or-video">
+            <div class="progress-bar-container-wedding" style="position: relative;">
                 <div class="progress-bar-fill-wedding" id="weddingProgressBarFill"></div>
-                <!-- Adicionadas imagens de fallback para garantir que as imagens não quebrem -->
-                <img src="Noivos.png" alt="Noivos" class="progress-icon emoji-bride" id="brideImage" onerror="this.onerror=null;this.src='https://placehold.co/25x25/a569bd/ffffff?text=💍'">
-                <img src="igreja.png" alt="Igreja" class="progress-icon church-image" id="churchImage" onerror="this.onerror=null;this.src='https://placehold.co/35x35/6a0dad/ffffff?text=⛪'">
-            </div>
-
-            <p class="text-lg mb-6 text-gray-700">Junte-se a nós para testemunhar o início de um novo capítulo em nossas vidas.</p>
-            <div class="hero-buttons flex flex-wrap justify-center items-center gap-4">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Confirmar Presença</a>
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento%20Alexandre%20%26%20Karina&dates=20251025T180000/20251025T190000&details=Celebre%20a%20uni%C3%A3o%20em%20matrim%C3%B3nio%20de%20Alexandre%20e%20Karina.%20Junte-se%20a%20n%C3%B3s%20para%20testemunhar%20o%20in%C3%ADcio%20de%20um%20novo%20cap%C3%ADtulo%20em%20nossas%20vidas.&location=2%C2%AA%20Igreja%20Batista%20de%20Cidade%20Dutra%2C%20Rua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010&sf=true&output=xml" target="_blank" class="btn-secondary inline-block">Adicionar ao Calendário</a>
-                <a href="quiz_de_casamento.html" target="_blank" class="btn-primary inline-block quiz-link">Jogar Quiz de Casamento</a>
+                <img src="Noivos.png" alt="Noivos" id="brideImage" class="progress-icon emoji-bride" style="left:0%;"
+                     onerror="this.onerror=null;this.src='https://placehold.co/25x25/a569bd/ffffff?text=💍'">
+                <img src="igreja.png" alt="Igreja" class="progress-icon church-image"
+                     style="right:-17.5px;"
+                     onerror="this.onerror=null;this.src='https://placehold.co/35x35/6a0dad/ffffff?text=⛪'">
             </div>
         </div>
-    </section>
-
-    <!-- Secção Detalhes do Convite -->
-    <section id="invitation-details" class="py-16 bg-gradient-to-b from-f7f0ff to-e0bbff">
-        <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row items-center justify-center md:justify-between">
-            <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                <h2 class="section-title">Nosso Convite</h2>
-                <p class="text-lg mb-4 text-gray-800">Com a benção de Deus e a alegria de nossos pais, Elisabete C. Curvelo, Norma M. G. Silva, e em memória: Isaias Curvelo e Edenyr W. Silva,</p>
-                <p class="text-xl font-semibold text-gray-900">Temos a imensa felicidade de convidar você para celebrar a nossa união em matrimônio.</p>
+        <div id="finalShow" style="display:none;">
+            <div id="butterfly">
+                <img src="borbolet_etern.png" alt="Borboleta">
             </div>
-            <div class="md:w-1/2 flex justify-center md:justify-end">
-                <!-- Adicionada uma imagem de fallback para garantir que o layout não quebre caso a imagem não carregue -->
-                <img src="nosdois.png" alt="Alexandre e Karina" class="rounded-xl shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x500/e0bbff/4a0e7e?text=Alexandre+%26+Karina'">
-            </div>
-        </div>
-    </section>
-
-    <!-- Secção Detalhes do Evento -->
-    <section id="event-details" class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="section-title">O Grande Dia</h2>
-            <p class="text-2xl font-bold mb-4 text-purple-800">25 de outubro de 2025, às 18h</p>
-            <p class="text-lg mb-2 text-gray-700"><strong>Local:</strong> 2ª Igreja Batista de Cidade Dutra</p>
-            <p class="text-lg mb-2 text-gray-700"><strong>Celebrante:</strong> Pastor Fernando Junior</p>
-            <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 - Terceira Divisão Interlagos <br> Cidade Dutra - São Paulo - SP, 04810-010</p>
-            <!-- Incorporação do Google Maps -->
-            <div class="relative w-full h-96 mt-8 rounded-xl overflow-hidden shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divis%C3%A3o%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20S%C3%A3o%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr" target="_blank" class="btn-primary inline-block mt-4">Abrir no Google Maps</a>
-        </div>
-    </section>
-
-    <!-- Secção RSVP - Agora com botão para o Formulário Google -->
-    <section id="rsvp" class="py-16 bg-gradient-to-b from-e0bbff to-f7f0ff">
-        <div class="container mx-auto px-4 text-center max-w-2xl">
-            <h2 class="section-title">Confirme Sua Presença</h2>
-            <p class="text-lg mb-8 text-gray-800">Mal podemos esperar para compartilhar este momento especial com você! Por favor, confirme sua presença através do formulário abaixo:</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Acessar Formulário de Confirmação</a>
-        </div>
-    </section>
-
-    <!-- Secção Lista de Presentes -->
-    <section id="gift-list" class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="section-title">Lista de Presentes</h2>
-            <p class="text-lg mb-8 text-gray-800">A sua presença já é o nosso maior presente! Mas se desejar nos presentear, aqui está a nossa lista:</p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                 <!-- Agrupando os botões de lista de presentes e seus ícones para melhor alinhamento e responsividade -->
-                <a href="https://www.finalfeliz.de/karinasilva-e-alexandrecurvelo" target="_blank" class="btn-primary flex items-center justify-center gap-2">
-                    <img src="magalu-logo.webp" alt="Logo Magalu" class="w-8 h-auto" onerror="this.onerror=null;this.src='https://placehold.co/32x32/8e44ad/ffffff?text=M'">
-                    Lista Magalu
-                </a>
-                <a href="lista_shopp.html" target="_blank" class="btn-primary flex items-center justify-center gap-2">
-                    <!-- Ajustado o caminho da imagem e adicionado fallback -->
-                    <img src="pngwing.png" alt="Logo Shopee" class="w-8 h-auto" onerror="this.onerror=null;this.src='https://placehold.co/32x32/8e44ad/ffffff?text=S'">
-                    Lista Shopee
-                </a>
+            <div id="youtubeVideo" style="margin-top:2rem;">
+                <iframe width="560" height="315"
+                  src="https://www.youtube-nocookie.com/embed/SDr7bgRsquE?si=i5Fq02ElVh5Zo6o5"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
             </div>
         </div>
-    </section>
-
-    <!-- Secção Livro de Visitas - Agora com botão para o Formulário Google -->
-    <section id="guestbook" class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center max-w-2xl">
-            <h2 class="section-title">Livro de Visitas ✨</h2>
-            <p class="text-lg mb-8 text-gray-800">Deixe uma mensagem especial para os noivos através do formulário abaixo:</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true" target="_blank" class="btn-primary inline-block">Acessar Formulário de Visitas</a>
+        <div class="hero-buttons flex flex-wrap justify-center items-center gap-4">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true"
+               target="_blank" rel="noopener noreferrer" class="btn-primary">Confirmar Presença</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Casamento%20Alexandre%20%26%20Karina&amp;dates=20251025T180000/20251025T190000&amp;details=Celebre%20a%20união%20de%20Alexandre%20e%20Karina.&amp;location=2%C2%AA%20Igreja%20Batista%20de%20Cidade%20Dutra%2C%20Rua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divisão%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20São%20Paulo%20-%20SP%2C%2004810-010&amp;sf=true&amp;output=xml"
+               target="_blank" rel="noopener noreferrer" class="btn-secondary">Adicionar ao Calendário</a>
+            <a href="quiz_de_casamento.html" target="_blank" rel="noopener noreferrer" class="btn-primary">Jogar Quiz</a>
         </div>
-    </section>
-
-    <!-- Secção Hashtag -->
-    <section class="py-12 bg-white text-center">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold text-purple-800 mb-4">#AlexandreEKarina</h3>
-            <p class="text-lg text-gray-700">Compartilhe seus momentos connosco usando a nossa hashtag!</p>
+    </div>
+</section>
+<section id="invitation-details" class="py-16 bg-gradient-to-b from-f7f0ff to-e0bbff">
+    <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+            <h2 class="section-title">Nosso Convite</h2>
+            <p class="text-lg mb-4 text-gray-800">Com a bênção de Deus e a alegria de nossos pais, Elisabete C. Curvelo, Norma M. G. Silva, e em memória: Isaias Curvelo e Edenyr W. Silva,</p>
+            <p class="text-xl font-semibold text-gray-900">Temos a imensa felicidade de convidar você para celebrar a nossa união em matrimônio.</p>
         </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer class="bg-purple-900 text-white py-8 text-center rounded-t-2xl footer-section">
-        <div class="flex flex-col items-center justify-center px-4">
-            <div class="audio-player-container">
-                <iframe src='https://www.4shared.com/web/embed/audio/file/CMQe_SPRfa?type=MINI&widgetWidth=530&showArtwork=true&playlistHeight=0&widgetRid=937928418141' style='overflow:hidden;height:60px;width:530px;border: 0;margin:0;'></iframe>
-            </div>
-            <p>&copy; 2025 Alexandre & Karina. Todos os direitos reservados.</p>
-            <p class="text-sm mt-2">Criado com carinho para o nosso dia especial.</p>
-            <p class="visit-counter">Visitas: <span id="visitCounter">0</span></p>
+        <div class="md:w-1/2 flex justify-center md:justify-end">
+            <img src="nosdois.png" alt="Alexandre e Karina" class="rounded-xl shadow-lg max-w-full h-auto"
+                 onerror="this.onerror=null;this.src='https://placehold.co/400x500/e0bbff/4a0e7e?text=Alexandre+%26+Karina'">
         </div>
-    </footer>
+    </div>
+</section>
+<section id="event-details" class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center max-w-3xl">
+        <h2 class="section-title">O Grande Dia</h2>
+        <p class="text-2xl font-bold mb-4 text-purple-800">25 de outubro de 2025, às 18h</p>
+        <p class="text-lg mb-2 text-gray-700"><strong>Local:</strong> 2ª Igreja Batista de Cidade Dutra</p>
+        <p class="text-lg mb-2 text-gray-700"><strong>Celebrante:</strong> Pastor Fernando Junior</p>
+        <p class="text-lg mb-6 text-gray-700">Rua Valter Ribeiro Marrany, 253 – Terceira Divisão Interlagos<br>Cidade Dutra – São Paulo – SP, 04810-010</p>
+        <div class="relative w-full h-96 mt-8 rounded-xl overflow-hidden shadow-lg">
+            <iframe
+                class="map-iframe"
+                title="Mapa da Igreja Batista de Cidade Dutra"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divisão%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20São%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2!1spt-BR!2sbr"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.9301871777125!2d-46.69923892394252!3d-23.714186978695174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fa4e68fb6e5%3A0x592770cbf10e586d!2sRua%20Valter%20Ribeiro%20Marrany%2C%20253%20-%20Terceira%20Divisão%20de%20Interlagos%2C%20Cidade%20Dutra%20-%20São%20Paulo%20-%20SP%2C%2004810-010!5e0!3m2!1spt-BR!2sbr!4v1751635000455!5m2"
+           target="_blank" rel="noopener noreferrer" class="btn-primary mt-4 inline-block">Abrir no Google Maps</a>
+    </div>
+</section>
+<section id="rsvp" class="py-16 bg-gradient-to-b from-e0bbff to-f7f0ff">
+    <div class="container mx-auto px-4 text-center max-w-2xl">
+        <h2 class="section-title">Confirme Sua Presença</h2>
+        <p class="text-lg mb-8 text-gray-800">Mal podemos esperar para compartilhar este momento especial com você! Por favor, confirme sua presença através do formulário abaixo:</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC78SZByoJOwbRDf5bPtA0Sv2O1u-hOC8X19Wxp2Vo8rOZ7A/viewform?embedded=true"
+           target="_blank" rel="noopener noreferrer" class="btn-primary inline-block">Acessar Formulário de Confirmação</a>
+    </div>
+</section>
+<section id="gift-list" class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center max-w-3xl">
+        <h2 class="section-title">Lista de Presentes</h2>
+        <p class="text-lg mb-8 text-gray-800">A sua presença já é o nosso maior presente! Mas se desejar nos presentear, aqui está a nossa lista:</p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+            <a href="https://www.finalfeliz.de/karinasilva-e-alexandrecurvelo" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center gap-2">
+                <img src="magalu-logo.webp" alt="Logo Magalu" class="w-8 h-auto"
+                     onerror="this.onerror=null;this.src='https://placehold.co/32x32/8e44ad/ffffff?text=M'">
+                Lista Magalu
+            </a>
+            <a href="lista_shopp.html" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center gap-2">
+                <img src="pngwing.png" alt="Logo Shopee" class="w-8 h-auto"
+                     onerror="this.onerror=null;this.src='https://placehold.co/32x32/8e44ad/ffffff?text=S'">
+                Lista Shopee
+            </a>
+        </div>
+    </div>
+</section>
+<section id="guestbook" class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center max-w-2xl">
+        <h2 class="section-title">Livro de Visitas ✨</h2>
+        <p class="text-lg mb-8 text-gray-800">Deixe uma mensagem especial para os noivos através do formulário abaixo:</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOhAJ7X5E9DT7ee5rPtqB6IeVx8hEkgEo3VsOJGBBj005KYQ/viewform?embedded=true"
+           target="_blank" rel="noopener noreferrer" class="btn-primary inline-block">Acessar Formulário de Visitas</a>
+    </div>
+</section>
+<section class="py-12 bg-white text-center">
+    <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-purple-800 mb-4">#AlexandreEKarina</h3>
+        <p class="text-lg text-gray-700">Compartilhe seus momentos connosco usando a nossa hashtag!</p>
+    </div>
+</section>
+<footer class="footer-section">
+    <div class="flex flex-col items-center justify-center px-4">
+        <div class="audio-player-container">
+            <iframe class="audio-iframe"
+                    title="Player de Áudio do Casamento"
+                    src="https://www.4shared.com/web/embed/audio/file/CMQe_SPRfa?type=MINI&widgetWidth=530&showArtwork=true&playlistHeight=0&widgetRid=937928418141"
+                    loading="lazy"></iframe>
+        </div>
+        <p>&copy; 2025 Alexandre &amp; Karina. Todos os direitos reservados.</p>
+        <p class="text-sm mt-2">Criado com carinho para o nosso dia especial.</p>
+        <p class="visit-counter">Visitas: <span id="visitCounter">0</span></p>
+    </div>
+</footer>
+<script>
+const weddingDate = new Date("2025-10-25T18:00:00").getTime();
+const startDate = new Date("2025-01-01T00:00:00").getTime();
+const totalDuration = weddingDate - startDate;
+const videoTriggerTime = new Date("2025-10-25T17:45:00").getTime();
 
-    <!-- Adicionada a biblioteca de Firebase para o contador de visitas e livro de visitas persistentes -->
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js"></script>
-    
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+const fill = document.getElementById('weddingProgressBarFill');
+const bride = document.getElementById('brideImage');
+const countdownDisplay = document.getElementById('countdownDisplay');
+const progressOrVideo = document.getElementById('progress-or-video');
+const finalShow = document.getElementById('finalShow');
 
-        // Variaveis globais do ambiente Canvas (não mexer)
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const authToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        
-        let app, db, auth;
+const startPos = 95; // Casal começa em 80%
+const endPos = 100;  // Igreja está em 100%
 
-        // Inicializa o Firebase e autentica o usuário
-        const initFirebase = async () => {
-            try {
-                if (Object.keys(firebaseConfig).length === 0) {
-                    console.error("Firebase config is missing. Visit counter will not be persistent.");
-                    return;
-                }
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                
-                if (authToken) {
-                    await signInWithCustomToken(auth, authToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
+function showFinals() {
+    if(progressOrVideo) progressOrVideo.style.display = 'none';
+    if(countdownDisplay) countdownDisplay.style.display = 'none';
+    if(finalShow) finalShow.style.display = 'block';
+    document.querySelector('.hero-section').style.minHeight = '120vh';
+}
 
-                console.log("Firebase initialized and user authenticated.");
-                setupVisitCounter();
-            } catch (error) {
-                console.error("Error initializing Firebase:", error);
-            }
-        };
+const interval = setInterval(()=>{
+    const now = Date.now();
+    const dist = weddingDate - now;
+    if (Date.now() >= videoTriggerTime) {
+        clearInterval(interval);
+        showFinals();
+        return;
+    }
+    const days = Math.floor(dist/(1000*60*60*24));
+    const hours = Math.floor((dist%(1000*60*60*24))/(1000*60*60));
+    const mins = Math.floor((dist%(1000*60*60))/(1000*60));
+    const secs = Math.floor((dist%(1000*60))/1000);
 
-        // Lógica do contador de visitas persistente com Firestore
-        const setupVisitCounter = async () => {
-            if (!db) {
-                console.error("Firestore not initialized.");
-                return;
-            }
+    document.getElementById("days").innerText = String(days).padStart(2,'0');
+    document.getElementById("hours").innerText = String(hours).padStart(2,'0');
+    document.getElementById("minutes").innerText = String(mins).padStart(2,'0');
+    document.getElementById("seconds").innerText = String(secs).padStart(2,'0');
 
-            // O ID do documento é fixo para que todos os usuários contem no mesmo contador
-            const counterDocRef = doc(db, `/artifacts/${appId}/public/data/visit-counter/main-counter`);
-            
-            try {
-                const docSnap = await getDoc(counterDocRef);
-
-                let currentCount = 0;
-                if (docSnap.exists()) {
-                    currentCount = docSnap.data().count;
-                }
-                
-                const newCount = currentCount + 1;
-
-                // Usando a data do casamento como base para o contador.
-                // Essa é uma forma de garantir que o contador seja único para este evento.
-                const weddingDate = new Date("2025-10-25T18:00:00").toISOString();
-
-                await setDoc(counterDocRef, {
-                    count: newCount,
-                    last_updated: new Date().toISOString(),
-                    event: "Casamento Alexandre e Karina",
-                    wedding_date: weddingDate
-                });
-
-                document.getElementById('visitCounter').innerText = newCount;
-                console.log("Visit count updated successfully.");
-
-            } catch (e) {
-                console.error("Error updating visit count:", e);
-                // Fallback para o contador do localStorage se o Firestore falhar
-                let visitCount = localStorage.getItem('weddingSiteVisitCount');
-                visitCount = visitCount ? parseInt(visitCount) + 1 : 1;
-                localStorage.setItem('weddingSiteVisitCount', visitCount);
-                document.getElementById('visitCounter').innerText = visitCount;
-            }
-        };
-
-        // Lógica do Cronómetro e Barra de Progresso
-        const weddingDate = new Date("October 25, 2025 18:00:00").getTime();
-        const currentDate = new Date().getTime();
-        const totalDuration = weddingDate - currentDate; // Duração total do período até o casamento (em ms)
-
-        const weddingProgressBarFill = document.getElementById('weddingProgressBarFill');
-        const brideImage = document.getElementById('brideImage');
-
-        const x = setInterval(function() {
-            const currentTime = new Date().getTime();
-            const distance = weddingDate - currentTime;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
-            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
-
-            if (distance > 0) {
-                const elapsed = currentTime - currentDate; // Tempo decorrido
-                let remainingPercentage = (distance / totalDuration) * 100;
-                let elapsedPercentage = (elapsed / totalDuration) * 100;
-                
-                remainingPercentage = Math.min(100, Math.max(0, remainingPercentage));
-                elapsedPercentage = Math.min(100, Math.max(0, elapsedPercentage));
-
-                weddingProgressBarFill.style.width = `${remainingPercentage}%`;
-                brideImage.style.left = `${elapsedPercentage}%`;
-            } else {
-                clearInterval(x);
-                document.querySelector(".countdown-timer").innerHTML = "<p class='text-3xl font-bold text-purple-800'>O GRANDE DIA CHEGOU!</p>";
-                weddingProgressBarFill.style.width = '0%';
-                brideImage.style.left = '100%';
-            }
-        }, 1000);
-
-        // Lógica do Menu Ocultar/Mostrar
-        let lastScrollY = 0;
-        const mainNavbar = document.getElementById('mainNavbar');
-        const scrollThreshold = 50;
-        let hideMenuTimeout;
-
-        function hideNavbar() {
-            mainNavbar.classList.add('navbar-hidden');
-        }
-
-        function showNavbar() {
-            mainNavbar.classList.remove('navbar-hidden');
-        }
-
-        function resetHideTimer() {
-            clearTimeout(hideMenuTimeout);
-            showNavbar();
-            hideMenuTimeout = setTimeout(hideNavbar, 2000);
-        }
-
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
-                clearTimeout(hideMenuTimeout);
-                hideNavbar();
-            } else if (currentScrollY < lastScrollY || currentScrollY <= scrollThreshold) {
-                resetHideTimer();
-            }
-            lastScrollY = currentScrollY;
-        });
-
-        document.addEventListener('mousemove', () => {
-            resetHideTimer();
-        });
-
-        document.addEventListener('touchstart', () => {
-            resetHideTimer();
-        });
-        
-        // Chamada da função para iniciar o Firebase quando a página carregar
-        initFirebase();
-    </script>
+    if (dist > 0) {
+        const progress = 1 - ((weddingDate - now) / totalDuration);
+        fill.style.width = (100 - progress * 100) + "%";
+        const bridePos = startPos + (endPos - startPos) * progress;
+        bride.style.left = `calc(${bridePos}% - 12px)`;
+    }
+},1000);
+</script>
 </body>
 </html>
